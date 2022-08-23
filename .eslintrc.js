@@ -34,5 +34,6 @@ module.exports = {
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
     'comma-dangle': ['error', 'only-multiline'],
+    'no-unused-vars': 'warn',
   },
 }
