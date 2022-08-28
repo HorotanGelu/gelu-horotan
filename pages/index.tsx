@@ -11,10 +11,11 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <p className='bg-400  p-10 border border-solid rounded-full'>
-        GELU IS BOMBA CU CEAS ALEX TRAGE PE NAS
+        DACA NU MA IA AMAZONU, APLIC LA EBAY SI CU PRIMUL SALARIU <br></br>
+        FAC O PARTIDA DE PESCUIT PE AMAZON CA SA MA PIS DIRECT IN EL
       </p>
       <Button className='hover:first-letter:text-blue-300' type='button'>
-        ALEX E ZEU
+        TEST BUTTON SHIt
       </Button>
     </div>
   )
