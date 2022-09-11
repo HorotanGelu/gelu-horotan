@@ -17,7 +17,7 @@ const Navigation = () => {
       <ul className='flex flex-row w-1/2 justify-around items-center'>
         {navItems?.map(item => {
           return (
-            <li key={item.id} className='navigation-item'>
+            <li key={item.id} className='navigation-item font-exosoft'>
               <Link href={`/${item.name === 'home' ? '' : item.name}`}>
                 {item.name}
               </Link>

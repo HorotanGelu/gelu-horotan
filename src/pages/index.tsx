@@ -18,6 +18,10 @@ with a flair for creating elegant solutions in the
 least amount of time'
         />
         <link rel='icon' href='/favicon.ico' />
+        <link
+          rel='stylesheet'
+          href='https://use.typekit.net/lmd6idu.css'
+        ></link>
       </Head>
       {/* <p className='bg-400  p-10 border border-solid rounded-full'>TEST P</p>
       <div className='bg-400  p-10 border border-solid rounded-full'>

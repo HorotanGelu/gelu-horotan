@@ -13,6 +13,9 @@ module.exports = {
         primaryLighter: '#242424',
         secondary: '#E5E5E5',
       },
+      fontFamily: {
+        exosoft: ['exo-soft', 'sans-serif'],
+      },
     },
   },
   plugins: [],
