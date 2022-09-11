@@ -9,4 +9,8 @@
   .navigation-item {
     @apply text-white uppercase cursor-pointer;
   }
+
+  .theme-color {
+    @apply bg-primary dark:bg-secondary;
+  }
 }
