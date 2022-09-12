@@ -23,6 +23,14 @@ least amount of time'
           href='https://use.typekit.net/lmd6idu.css'
         ></link>
       </Head>
+      <div className='flex flex-col text-primaryTint uppercase'>
+        <h1>HOME</h1>
+        <h2>HOME</h2>
+        <h3>HOME</h3>
+        <h4>HOME</h4>
+        <h5>HOME</h5>
+        <h6>HOME</h6>
+      </div>
       {/* <p className='bg-400  p-10 border border-solid rounded-full'>TEST P</p>
       <div className='bg-400  p-10 border border-solid rounded-full'>
         ACTIVATE
