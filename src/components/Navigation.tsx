@@ -12,7 +12,7 @@ const Navigation = () => {
     { id: 6, name: 'register' },
   ]
   return (
-    <nav className='flex flex-row w-full py-3 px-2  justify-between bg-primaryTint text-white  items-center'>
+    <nav className='flex flex-row w-full py-3 px-2  justify-between bg-primary_t dark:bg-secondary_s_2  items-center'>
       <FaIcons.FaApplePay size='28' />
       <ul className='flex flex-row w-1/2 justify-around items-center'>
         {navItems?.map(item => {

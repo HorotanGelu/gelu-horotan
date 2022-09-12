@@ -6,7 +6,7 @@ import Navigation from '../components/Navigation'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className='font-exosoft'>
+    <div className='font-exosoft '>
       <Navigation />
       <DarkMode />
       <Component {...pageProps} />

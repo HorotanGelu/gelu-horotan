@@ -30,7 +30,7 @@
   h5,
   h6,
   p {
-    @apply text-secondary dark:text-primary;
+    @apply text-primary_t dark:text-secondary_s_2;
   }
 
   h1 {

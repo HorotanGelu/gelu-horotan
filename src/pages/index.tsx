@@ -25,6 +25,7 @@ least amount of time'
       </Head>
       <div className='flex flex-col text-primaryTint uppercase'>
         <h1>HOME</h1>
+        <div className='bg-gradient-to-r from-accent to-secAccent'>G1</div>
         <h2>HOME</h2>
         <h3>HOME</h3>
         <h4>HOME</h4>
