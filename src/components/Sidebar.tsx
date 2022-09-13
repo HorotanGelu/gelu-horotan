@@ -49,7 +49,10 @@ const Sidebar = () => {
 
 const SideBarIcon = ({ icon, name, key }) => (
   <div className='sidebar-item-container' key={key}>
-    <div className='sidebar-icon '>{icon}</div>
+    <div className='sidebar-icon '>
+      {icon}
+      {/* &lt;/&gt; */}
+    </div>
     <p>{name}</p>
   </div>
 )
