@@ -5,9 +5,7 @@ import Button from '../components/Button'
 export default function Home() {
   return (
     <div
-      className={
-        'flex justify-center items-center w-full h-screen theme-color '
-      }
+      className={'flex justify-center items-center w-full h-screen theme-color'}
     >
       <Head>
         <title>Gelu Horotan - Frontend Developer</title>
