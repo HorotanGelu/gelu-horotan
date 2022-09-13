@@ -14,25 +14,28 @@ const Navigation = () => {
     { id: 5, name: 'login' },
     { id: 6, name: 'register' },
   ]
-  console.log(isDesktop)
+
   return (
     <>
-      {isDesktop && (
-        <nav className='flex  flex-row w-full py-3 px-2  justify-between bg-primary_t dark:bg-secondary_s_2  items-center'>
-          <FaIcons.FaApplePay size='28' />
-          <ul className='flex flex-row w-1/2 justify-around items-center'>
-            {navItems?.map(item => {
-              return (
-                <li key={item.id} className='navigation-item '>
-                  <Link href={`/${item.name === 'home' ? '' : item.name}`}>
-                    {item.name}
-                  </Link>
-                </li>
-              )
-            })}
-          </ul>
-        </nav>
-      )}
+      <nav
+        className={`${
+          isDesktop ? 'flex' : 'hidden'
+        } flex  flex-row w-full py-3 px-2  justify-between bg-primary_t dark:bg-secondary_s_2  items-center`}
+      >
+        <FaIcons.FaApplePay size='28' />
+        <ul className='flex flex-row w-1/2 justify-around items-center'>
+          {navItems?.map(item => {
+            return (
+              <li key={item.id} className='navigation-item '>
+                <Link href={`/${item.name === 'home' ? '' : item.name}`}>
+                  {item.name}
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
+      </nav>
+
       {!isDesktop && <Sidebar />}
     </>
   )
