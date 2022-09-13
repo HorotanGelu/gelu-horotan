@@ -1,11 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
-import useMediaQuery from '../customHooks/useMediaQuery'
+
 import * as FaIcons from 'react-icons/fa'
 import Sidebar from './Sidebar'
 
 const Navigation = () => {
-  const isDesktop = useMediaQuery('(min-width: 960px)')
+  // const isDesktop = useMediaQuery('(min-width: 960px)')
   const navItems = [
     { id: 1, name: 'home' },
     { id: 2, name: 'about' },
@@ -18,9 +18,9 @@ const Navigation = () => {
   return (
     <>
       <nav
-        className={`${
-          isDesktop ? 'flex' : 'hidden'
-        } flex  flex-row w-full py-3 px-2  justify-between bg-primary_t dark:bg-secondary_s_2  items-center`}
+        className={
+          ' flex flex-row w-full py-3 px-2  justify-between  bg-gradient-to-r from-byz_s_2 to-byz_t  items-center'
+        }
       >
         <FaIcons.FaApplePay size='28' />
         <ul className='flex flex-row w-1/2 justify-around items-center'>
@@ -36,7 +36,7 @@ const Navigation = () => {
         </ul>
       </nav>
 
-      {!isDesktop && <Sidebar />}
+      <Sidebar />
     </>
   )
 }

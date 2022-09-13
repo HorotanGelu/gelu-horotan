@@ -31,7 +31,7 @@ const Sidebar = () => {
       <div
         className={`${
           isOpen ? ' translate-x-0' : '-translate-x-full'
-        }  w-max z-20 fixed  h-screen  flex gap-3 flex-col bg-primary  text-secondary shadow-lg px-4 py-20 ease-in-out   duration-200 `}
+        }  w-max z-20 fixed  h-screen  flex gap-3 flex-col bg-gradient-to-r from-primary to-primary_s text-secondary shadow-lg px-4 py-20 ease-in-out   duration-200 `}
       >
         {sidebarItems.map(item => {
           return (

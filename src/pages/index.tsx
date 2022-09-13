@@ -5,7 +5,9 @@ import Button from '../components/Button'
 export default function Home() {
   return (
     <div
-      className={'flex justify-center items-center w-full h-screen theme-color'}
+      className={
+        'flex justify-start items-center w-full h-screen theme-color overflow-x-hidden'
+      }
     >
       <Head>
         <title>Gelu Horotan - Frontend Developer</title>
@@ -21,29 +23,25 @@ least amount of time'
           href='https://use.typekit.net/lmd6idu.css'
         ></link>
       </Head>
-      <div className='flex flex-col text-primaryTint uppercase'>
-        <h1>HOME</h1>
-        <div className='bg-gradient-to-r from-accent to-secAccent'>G1</div>
-        <h2>HOME</h2>
-        <h3>HOME</h3>
-        <h4>HOME</h4>
-        <h5>HOME</h5>
-        <h6>HOME</h6>
+      <div className='flex flex-col w-[45%] p-20'>
+        <h1 className=' text-secondary z-20 p-2'>
+          Gelu Horotan <br /> Frontend Web Developer
+        </h1>
+        <Button
+          rounded
+          className=' bg-amaranth text-secondary z-20 p-2'
+          type='button'
+        >
+          SEE MY PROJECTS
+        </Button>
       </div>
-      {/* <p className='bg-400  p-10 border border-solid rounded-full'>TEST P</p>
-      <div className='bg-400  p-10 border border-solid rounded-full'>
-        ACTIVATE
-      </div>
-      <Button
-        className='hover:first-letter:text-blue-300 bg-primary'
-        type='button'
+      <video
+        autoPlay
+        muted
+        className=' w-[75%] theme-color   absolute -right-28'
       >
-        TEST
-      </Button> */}
-      {/* <video controls src={'../../public/macbook.webm'} /> */}
-      {/* <video autoPlay loop muted>
         <source src={'/macbook.webm'} type='video/webm'></source>
-      </video> */}
+      </video>
     </div>
   )
 }
