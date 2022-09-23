@@ -16,8 +16,6 @@ const mapDispatchToProps = {
 const connector = connect(mapStateToProps, mapDispatchToProps)
 type PropsFromRedux = ConnectedProps<typeof connector>
 
-type OwnProps = RouteComponentProps<{ id: string }>
-
 export type Props = PropsFromRedux & OwnProps
 
 function Register({ setAlert, register }: Props) {
