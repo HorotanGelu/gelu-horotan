@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
-import { setAlert } from '../../redux/actions/alert'
-import { register } from '../../redux/actions/auth'
+import { setAlert } from '../redux/actions/alert'
+import { register } from '../redux/actions/auth'
 
 const mapStateToProps = (state, props: OwnProps) => {
   return {
@@ -20,7 +20,7 @@ type OwnProps = RouteComponentProps<{ id: string }>
 
 export type Props = PropsFromRedux & OwnProps
 
-const index = ({ setAlert, register }: Props) => {
+const Register = ({ setAlert, register }: Props) => {
   console.log(register)
   const [formData, setFormData] = useState({
     name: '',
@@ -82,4 +82,4 @@ const index = ({ setAlert, register }: Props) => {
   )
 }
 
-export default connector(index)
+export default connector(Register)
