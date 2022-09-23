@@ -20,7 +20,7 @@ type OwnProps = RouteComponentProps<{ id: string }>
 
 export type Props = PropsFromRedux & OwnProps
 
-const Register = ({ setAlert, register }: Props) => {
+function Register({ setAlert, register }: Props) {
   console.log(register)
   const [formData, setFormData] = useState({
     name: '',
