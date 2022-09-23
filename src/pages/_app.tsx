@@ -3,14 +3,18 @@ import React from 'react'
 import '../../globals.css'
 import DarkMode from '../components/DarkMode'
 import Navigation from '../components/Navigation'
+import store from '../redux/store/store'
+import { Provider } from 'react-redux'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className='font-exosoft '>
-      <Navigation />
-      <DarkMode />
-      <Component {...pageProps} />
-    </div>
+    <Provider store={store}>
+      <div className='font-exosoft'>
+        <Navigation />
+        <DarkMode />
+        <Component {...pageProps} />
+      </div>
+    </Provider>
   )
 }
 

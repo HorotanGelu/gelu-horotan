@@ -19,7 +19,7 @@ const Navigation = () => {
     <>
       <nav
         className={
-          ' flex flex-row w-full py-3 px-2  justify-between  bg-gradient-to-r from-byz_s_2 to-byz_t  items-center'
+          ' flex flex-row  w-full py-3 px-2  justify-between  bg-gradient-to-r from-byz_s_2 to-byz_t  z-30 items-center'
         }
       >
         <FaIcons.FaApplePay size='28' />
@@ -27,7 +27,15 @@ const Navigation = () => {
           {navItems?.map(item => {
             return (
               <li key={item.id} className='navigation-item '>
-                <Link href={`/${item.name === 'home' ? '' : item.name}`}>
+                <Link
+                  href={`/${
+                    item.name === 'home'
+                      ? ''
+                      : // : item.name === 'register'
+                        // ? ''
+                        item.name
+                  }`}
+                >
                   {item.name}
                 </Link>
               </li>

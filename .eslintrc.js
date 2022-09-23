@@ -21,16 +21,7 @@ module.exports = {
   plugins: ['react', '@typescript-eslint'],
   rules: {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    indent: [
-      'error',
-      2,
-      {
-        SwitchCase: 1,
-        offsetTernaryExpressions: true,
-        flatTernaryExpressions: false,
-        ignoredNodes: ['TemplateLiteral > *'],
-      },
-    ],
+    indent: 'off',
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
     'comma-dangle': ['error', 'only-multiline'],
