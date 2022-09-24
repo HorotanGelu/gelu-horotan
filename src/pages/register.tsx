@@ -3,23 +3,22 @@ import { connect, ConnectedProps } from 'react-redux'
 import { setAlert } from '../redux/actions/alert'
 import { register } from '../redux/actions/auth'
 
-const mapStateToProps = (state, props: OwnProps) => {
+const mapStateToProps = (state: any) => {
   return {
     alert: state.alert,
-    register: register,
+    auth: state.auth,
   }
 }
 const mapDispatchToProps = {
   setAlert,
   register,
 }
-const connector = connect(mapStateToProps, mapDispatchToProps)
-type PropsFromRedux = ConnectedProps<typeof connector>
 
+// type OwnProps = RouteComponentProps<{ id: string }>
 // type OwnProps = RouteComponentProps<{ id: string }>
 
 export type Props = PropsFromRedux
-//  & OwnProps
+// & OwnProps
 
 function Register({ setAlert, register }: Props) {
   const [formData, setFormData] = useState({
@@ -81,5 +80,6 @@ function Register({ setAlert, register }: Props) {
     </div>
   )
 }
-
+const connector = connect(mapStateToProps, mapDispatchToProps)
+type PropsFromRedux = ConnectedProps<typeof connector>
 export default connector(Register)
