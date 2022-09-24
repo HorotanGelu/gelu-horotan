@@ -29,6 +29,7 @@
     "three": "^0.144.0",
     "uuid": "^9.0.0"
   },
+  "proxy": "https://gelu-horotan-backend.onrender.com",
   "devDependencies": {
     "@types/node": "^18.7.11",
     "@types/react": "^18.0.17",
