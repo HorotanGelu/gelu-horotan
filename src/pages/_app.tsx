@@ -1,9 +1,9 @@
-import { AppProps } from 'next/app'
+import type { AppProps } from 'next/app'
 import React from 'react'
 import '../../globals.css'
 import DarkMode from '../components/DarkMode'
 import Navigation from '../components/Navigation'
-import store from '../redux/store/store'
+import store from '../store/store'
 import { Provider } from 'react-redux'
 
 function MyApp({ Component, pageProps }: AppProps) {

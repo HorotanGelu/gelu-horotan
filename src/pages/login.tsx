@@ -1,48 +1,28 @@
-import React, { useState, useEffect } from 'react'
-import { setAlert } from '../store/alertSlice'
-import { register, loadUser } from '../store/authSlice'
+import React, { useState } from 'react'
+import { NextPage } from 'next'
 import { useAppDispatch } from '../store/hooks'
 
-function Register() {
-  // const alerts = useSelector(state => state.alerts)
+const Login: NextPage = () => {
   const dispatch = useAppDispatch()
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
     password: '',
-    password2: '',
   })
 
-  const { name, email, password, password2 } = formData
+  const { email, password } = formData
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
   const onSubmit = async e => {
     e.preventDefault()
-    if (password !== password2) {
-      dispatch(setAlert('test', 'test'))
-    } else {
-      dispatch(register({ name, email, password }))
-    }
+    // dispatch(login(email, password))
   }
-
-  useEffect(() => {
-    dispatch(loadUser())
-  }, [dispatch])
-
   return (
     <div className='flex flex-col h-full w-full items-center justify-center bg-slate-600'>
       <form
         className='flex flex-col w-full items-center justify-center gap-5 text-white bg-byz_s_2 p-6 rounded-b-3xl'
         onSubmit={e => onSubmit(e)}
       >
-        <input
-          type='text'
-          name='name'
-          value={name}
-          placeholder='name'
-          onChange={e => onChange(e)}
-        />
         <input
           type='text'
           name='email'
@@ -57,17 +37,11 @@ function Register() {
           placeholder='password'
           onChange={e => onChange(e)}
         />
-        <input
-          type='password'
-          name='password2'
-          value={password2}
-          placeholder='password2'
-          onChange={e => onChange(e)}
-        />
-        <input type='submit' value='Register' />
+
+        <input type='submit' value='Login' />
       </form>
     </div>
   )
 }
 
-export default Register
+export default Login
