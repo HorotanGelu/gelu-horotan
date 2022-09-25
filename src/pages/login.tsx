@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { NextPage } from 'next'
 import { useAppDispatch } from '../store/hooks'
+import { login } from '../store/authSlice'
 
 const Login: NextPage = () => {
   const dispatch = useAppDispatch()
@@ -15,12 +16,12 @@ const Login: NextPage = () => {
   }
   const onSubmit = async e => {
     e.preventDefault()
-    // dispatch(login(email, password))
+    dispatch(login({ email, password }))
   }
   return (
     <div className='flex flex-col h-full w-full items-center justify-center bg-slate-600'>
       <form
-        className='flex flex-col w-full items-center justify-center gap-5 text-white bg-byz_s_2 p-6 rounded-b-3xl'
+        className='flex flex-col w-full items-center justify-center gap-5  bg-byz_s_2 p-6 rounded-b-3xl'
         onSubmit={e => onSubmit(e)}
       >
         <input

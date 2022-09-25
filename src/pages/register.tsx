@@ -20,7 +20,7 @@ function Register() {
   const onSubmit = async e => {
     e.preventDefault()
     if (password !== password2) {
-      dispatch(setAlert('test', 'test'))
+      dispatch(setAlert('Registration failed.', 'test'))
     } else {
       dispatch(register({ name, email, password }))
     }
@@ -33,7 +33,7 @@ function Register() {
   return (
     <div className='flex flex-col h-full w-full items-center justify-center bg-slate-600'>
       <form
-        className='flex flex-col w-full items-center justify-center gap-5 text-white bg-byz_s_2 p-6 rounded-b-3xl'
+        className='flex flex-col w-full items-center justify-center gap-5 bg-byz_s_2 p-6 rounded-b-3xl'
         onSubmit={e => onSubmit(e)}
       >
         <input

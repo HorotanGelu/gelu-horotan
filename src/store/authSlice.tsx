@@ -41,17 +41,41 @@ const authSlice = createSlice({
       state.isAuthenticated = false
       state.loading = false
     },
+    loginFail: state => {
+      localStorage.removeItem('token')
+      state.token = null
+      state.isAuthenticated = false
+      state.loading = false
+    },
     authError: state => {
       localStorage.removeItem('token')
       state.token = null
       state.isAuthenticated = false
       state.loading = false
     },
+    loginSuccess: (state, action) => {
+      state.isAuthenticated = true
+      state.loading = false
+      state.user = action.payload
+    },
+    logout: state => {
+      localStorage.removeItem('token')
+      state.token = null
+      state.user = null
+      state.isAuthenticated = false
+      state.loading = false
+    },
   },
 })
 
-const { userLoaded, registerSuccess, registerFail, authError } =
-  authSlice.actions
+const {
+  userLoaded,
+  registerSuccess,
+  registerFail,
+  authError,
+  loginSuccess,
+  loginFail,
+} = authSlice.actions
 export default authSlice.reducer
 
 export const loadUser = () => async (dispatch: Dispatch) => {
@@ -95,5 +119,29 @@ export const register =
       }
 
       dispatch(registerFail())
+    }
+  }
+
+// Login User
+export const login =
+  ({ email, password }): AppThunk =>
+  async dispatch => {
+    const body = { email, password }
+
+    try {
+      const res = await axios.post('http://localhost:5000/api/auth', body)
+
+      dispatch(loginSuccess(res.data))
+      dispatch(userLoaded(res.data))
+    } catch (err) {
+      const errors = err.response.data.errors
+
+      if (errors) {
+        errors.forEach((error: { msg: string }) =>
+          dispatch(setAlert(error.msg, 'danger'))
+        )
+      }
+
+      dispatch(loginFail())
     }
   }
