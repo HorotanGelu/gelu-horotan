@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import * as FaIcons from 'react-icons/fa'
 import Sidebar from './Sidebar'
 import Modal from './Modal'
-import Login from './login'
-import Register from './Register'
+
+import LoginForm from './Form/LoginForm'
+import RegisterForm from './Form/RegisterForm'
 
 const Navigation = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  })
+
+  const { email, password } = formData
   // const isDesktop = useMediaQuery('(min-width: 960px)')
   const navItems = [
     { id: 1, name: 'home' },
@@ -15,7 +22,12 @@ const Navigation = () => {
     { id: 4, name: 'contact' },
     { id: 5, name: 'sign in' },
   ]
-
+  const onChange = e => {
+    console.log(formData)
+    setFormData(()=> {
+      { ...formData, [e.target.name]: e.target.value }
+    })
+  }
   return (
     <>
       <nav
@@ -33,11 +45,11 @@ const Navigation = () => {
                     tabs={[
                       {
                         title: 'Account',
-                        component: <Login></Login>,
+                        component: <LoginForm onChange={onChange}></LoginForm>,
                       },
                       {
                         title: 'Register',
-                        component: <Register></Register>,
+                        component: <RegisterForm></RegisterForm>,
                       },
                     ]}
                   >

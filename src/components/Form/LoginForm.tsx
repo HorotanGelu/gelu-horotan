@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { useAppDispatch } from '../store/hooks'
-import { login } from '../store/authSlice'
+import { useAppDispatch } from '../../store/hooks'
+import { login } from '../../store/authSlice'
+import Input from './Input'
 
-const Login = () => {
+const LoginForm = ({ onChange }) => {
   const dispatch = useAppDispatch()
   const [formData, setFormData] = useState({
     email: '',
@@ -10,9 +11,7 @@ const Login = () => {
   })
 
   const { email, password } = formData
-  const onChange = e => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+
   const onSubmit = async e => {
     e.preventDefault()
     dispatch(login({ email, password }))
@@ -24,6 +23,7 @@ const Login = () => {
   //   }
   //   dispatch(loadUser())
   // }, [])
+
   return (
     <div className='flex flex-col h-80 min-h-full w-full items-center justify-center'>
       <form
@@ -31,6 +31,7 @@ const Login = () => {
         onSubmit={e => onSubmit(e)}
       >
         <p className='pt-8'>Already a member ? Jump on board.</p>
+        <Input labelName='name' onChangeHandler={onChange}></Input>
         <input
           className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
           type='text'
@@ -39,7 +40,7 @@ const Login = () => {
           placeholder='email'
           onChange={e => onChange(e)}
         />
-        <input
+        {/* <input
           className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
           type='password'
           name='password'
@@ -52,10 +53,10 @@ const Login = () => {
           className='inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
           type='submit'
           value='Login'
-        />
+        /> */}
       </form>
     </div>
   )
 }
 
-export default Login
+export default LoginForm

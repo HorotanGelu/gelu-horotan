@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { setAlert } from '../store/alertSlice'
-import { register, loadUser } from '../store/authSlice'
-import { useAppDispatch } from '../store/hooks'
+import { setAlert } from '../../store/alertSlice'
+import { useAppDispatch } from '../../store/hooks'
+import { register, loadUser } from '../../store/authSlice'
 
-const Register = () => {
+const RegisterForm = () => {
   // const alerts = useSelector(state => state.alerts)
   const dispatch = useAppDispatch()
   const [formData, setFormData] = useState({
@@ -79,4 +79,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default RegisterForm

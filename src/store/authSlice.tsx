@@ -21,14 +21,12 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     userLoaded: (state, { payload }) => {
-      // modify the draft state and return nothing
       state.token = payload.token
       state.isAuthenticated = true
       state.loading = false
       state.user = payload
     },
     registerSuccess: (state, action) => {
-      // replace the entire slice state
       localStorage.setItem('token', action.payload.token)
       state.token = action.payload.token
       state.isAuthenticated = true
