@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.2",
+    "@radix-ui/react-popover": "1.0.0",
+    "@radix-ui/react-tabs": "^1.0.0",
     "@reduxjs/toolkit": "^1.8.5",
     "axios": "^0.27.2",
     "framer-motion": "^7.3.4",

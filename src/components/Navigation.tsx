@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
-
 import * as FaIcons from 'react-icons/fa'
 import Sidebar from './Sidebar'
 import Modal from './Modal'
+import Login from './login'
+import Register from './Register'
 
 const Navigation = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
   // const isDesktop = useMediaQuery('(min-width: 960px)')
   const navItems = [
     { id: 1, name: 'home' },
@@ -15,9 +15,6 @@ const Navigation = () => {
     { id: 4, name: 'contact' },
     { id: 5, name: 'sign in' },
   ]
-  function toggleModal() {
-    setIsOpen(prevState => !prevState)
-  }
 
   return (
     <>
@@ -31,7 +28,22 @@ const Navigation = () => {
           {navItems?.map(item => {
             return (
               <li key={item.id} className='navigation-item '>
-                {item.name === 'sign in' && <Modal modalTitle={'SIGN IN'} />}
+                {item.name === 'sign in' && (
+                  <Modal
+                    tabs={[
+                      {
+                        title: 'Account',
+                        component: <Login></Login>,
+                      },
+                      {
+                        title: 'Register',
+                        component: <Register></Register>,
+                      },
+                    ]}
+                  >
+                    <h2>GH</h2>
+                  </Modal>
+                )}
                 {item.name !== 'sign in' && (
                   <Link href={`/${item.name === 'home' ? '' : item.name}`}>
                     {item.name}

@@ -1,9 +1,11 @@
 import { Dialog, Transition } from '@headlessui/react'
 import React, { Fragment, useState } from 'react'
+import * as Tabs from '@radix-ui/react-tabs'
+import { motion, AnimatePresence } from 'framer-motion'
 
-const Modal = ({ modalTitle }) => {
+const Modal = ({ tabs, children }) => {
   const [isOpen, setIsOpen] = useState(false)
-
+  const [activeTab, setActiveTab] = useState(0)
   function closeModal() {
     setIsOpen(false)
   }
@@ -37,7 +39,7 @@ const Modal = ({ modalTitle }) => {
           </Transition.Child>
 
           <div className='fixed inset-0 overflow-y-auto'>
-            <div className='flex min-h-full items-center justify-center p-4 text-center'>
+            <div className='flex  min-h-screen items-center justify-center p-4 text-center'>
               <Transition.Child
                 as={Fragment}
                 enter='ease-out duration-300'
@@ -47,21 +49,60 @@ const Modal = ({ modalTitle }) => {
                 leaveFrom='opacity-100 scale-100'
                 leaveTo='opacity-0 scale-95'
               >
-                <Dialog.Panel className='w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
+                <Dialog.Panel className='w-full   min-h-full bg-white max-w-md transform overflow-hidden rounded-2xl p-6 text-left align-middle shadow-xl transition-all'>
                   <Dialog.Title
                     as='h3'
-                    className='text-lg font-medium leading-6 text-gray-900'
+                    className='text-lg font-medium leading-6 text-gray-900 justify-center flex m-8'
                   >
-                    {modalTitle}
+                    {children}
+                    {/* Become a member */}
                   </Dialog.Title>
-                  <div className='mt-2'>
-                    <p className='text-sm text-gray-500'>
-                      Your payment has been successfully submitted. We’ve sent
-                      you an email with all of the details of your order.
-                    </p>
-                  </div>
+                  <Tabs.Root defaultValue='tab1' orientation='vertical'>
+                    <Tabs.List
+                      aria-label='tabs example'
+                      className='flex w-full justify-center  '
+                    >
+                      {tabs &&
+                        tabs.map((tab, index) => {
+                          return (
+                            <Tabs.Trigger
+                              value={`tab${index + 1}`}
+                              key={index}
+                              className='odd:rounded-tl-xl even:rounded-tr-xl px-8 py-1 relative'
+                              onClick={() => {
+                                setActiveTab(index)
+                              }}
+                            >
+                              {tab.title}
+                              <AnimatePresence>
+                                <motion.span
+                                  initial={{ scaleX: 0 }}
+                                  animate={{
+                                    scaleX: `${activeTab === index ? 1 : 0}`,
+                                  }}
+                                  exit={{ scaleX: 0, originX: 0.5 }}
+                                  transition={{
+                                    duration: 1,
+                                    ease: 'easeInOut',
+                                  }}
+                                  className='absolute my-0 mx-auto bottom-0 left-0 w-full  h-0.5 bg-black transition-scale ease-in-out '
+                                />
+                              </AnimatePresence>
+                            </Tabs.Trigger>
+                          )
+                        })}
+                    </Tabs.List>
+                    {tabs &&
+                      tabs.map((tab, index) => {
+                        return (
+                          <Tabs.Content value={`tab${index + 1}`} key={index}>
+                            {tab.component}
+                          </Tabs.Content>
+                        )
+                      })}
+                  </Tabs.Root>
 
-                  <div className='mt-4'>
+                  {/* <div className='mt-4'>
                     <button
                       type='button'
                       className='inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
@@ -69,7 +110,7 @@ const Modal = ({ modalTitle }) => {
                     >
                       Got it, thanks!
                     </button>
-                  </div>
+                  </div> */}
                 </Dialog.Panel>
               </Transition.Child>
             </div>
