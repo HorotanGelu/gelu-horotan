@@ -1,6 +1,5 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import Button from '../components/Button'
-import { Dialog } from '@headlessui/react'
 
 export default function Home() {
   const myRef = useRef<HTMLDivElement>(null)

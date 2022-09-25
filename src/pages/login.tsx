@@ -18,6 +18,13 @@ const Login: NextPage = () => {
     e.preventDefault()
     dispatch(login({ email, password }))
   }
+
+  // useEffect(() => {
+  //   if (localStorage.token) {
+  //     setAuthToken(localStorage.token)
+  //   }
+  //   dispatch(loadUser())
+  // }, [])
   return (
     <div className='flex flex-col h-full w-full items-center justify-center bg-slate-600'>
       <form

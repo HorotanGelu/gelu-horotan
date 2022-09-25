@@ -6,12 +6,12 @@ import { AppThunk } from './store'
 
 const initialState = {
   token: typeof window !== 'undefined' ? localStorage.getItem('token') : '',
-  isAuthenticated:
-    typeof window !== 'undefined'
-      ? localStorage.getItem('token')
-        ? true
-        : false
-      : '', // or just !!localStorage.getItem('token'),
+  isAuthenticated: false,
+  // typeof window !== 'undefined'
+  //   ? localStorage.getItem('token')
+  //     ? true
+  //     : false
+  //   : '', // or just !!localStorage.getItem('token'),
   loading: true,
   user: null,
 }
@@ -20,12 +20,12 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    userLoaded: (state, action) => {
+    userLoaded: (state, { payload }) => {
       // modify the draft state and return nothing
-      state.token = action.payload.token
+      state.token = payload.token
       state.isAuthenticated = true
       state.loading = false
-      state.user = action.payload
+      state.user = payload
     },
     registerSuccess: (state, action) => {
       // replace the entire slice state
@@ -53,10 +53,11 @@ const authSlice = createSlice({
       state.isAuthenticated = false
       state.loading = false
     },
-    loginSuccess: (state, action) => {
+    loginSuccess: (state, { payload }) => {
+      localStorage.setItem('token', payload.token)
       state.isAuthenticated = true
       state.loading = false
-      state.user = action.payload
+      state.user = payload
     },
     logout: state => {
       localStorage.removeItem('token')
@@ -132,7 +133,7 @@ export const login =
       const res = await axios.post('http://localhost:5000/api/auth', body)
 
       dispatch(loginSuccess(res.data))
-      dispatch(userLoaded(res.data))
+      dispatch(loadUser())
     } catch (err) {
       const errors = err.response.data.errors
 
