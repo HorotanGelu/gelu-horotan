@@ -33,6 +33,7 @@ export default function Home() {
             SEE MY PROJECTS
           </Button>
         </div>
+        <div className='text-white'>SIGN IN</div>
 
         {/* <video
           autoPlay

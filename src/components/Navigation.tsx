@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 
 import * as FaIcons from 'react-icons/fa'
 import Sidebar from './Sidebar'
+import Modal from './Modal'
 
 const Navigation = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   // const isDesktop = useMediaQuery('(min-width: 960px)')
   const navItems = [
     { id: 1, name: 'home' },
     { id: 2, name: 'about' },
     { id: 3, name: 'projects' },
     { id: 4, name: 'contact' },
-    { id: 5, name: 'login' },
-    { id: 6, name: 'register' },
+    { id: 5, name: 'sign in' },
   ]
+  function toggleModal() {
+    setIsOpen(prevState => !prevState)
+  }
 
   return (
     <>
@@ -27,17 +31,12 @@ const Navigation = () => {
           {navItems?.map(item => {
             return (
               <li key={item.id} className='navigation-item '>
-                <Link
-                  href={`/${
-                    item.name === 'home'
-                      ? ''
-                      : // : item.name === 'register'
-                        // ? ''
-                        item.name
-                  }`}
-                >
-                  {item.name}
-                </Link>
+                {item.name === 'sign in' && <Modal modalTitle={'SIGN IN'} />}
+                {item.name !== 'sign in' && (
+                  <Link href={`/${item.name === 'home' ? '' : item.name}`}>
+                    {item.name}
+                  </Link>
+                )}
               </li>
             )
           })}

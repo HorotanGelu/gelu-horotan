@@ -8,7 +8,7 @@ const DarkMode = () => {
   return (
     <span
       onClick={handleMode}
-      className={`absolute py-5 px-2 right-0  ${
+      className={`absolute py-5 px-2 right-0 top-0 to ${
         darkTheme ? 'text-primary' : 'text-yellow-400'
       }`}
     >
