@@ -12,7 +12,21 @@
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "format": "prettier --write .",
-    "test-all": "npm run check-format && npm run check-lint && npm run check-types"
+    "test-all": "npm run check-format && npm run check-lint && npm run check-types",
+    "scriptname": "husky install"
+  },
+  "lint-staged": {
+    "src/**/*.{html,tsx,scss,ts,js,jsx,json}": [
+      "prettier --write"
+    ],
+    "src/**/*.ts": [
+      "eslint --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
     "@headlessui/react": "^1.7.2",
@@ -26,6 +40,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
     "react-redux": "^8.0.4",
+    "redux-persist": "^6.0.0",
     "three": "^0.144.0",
     "uuid": "^9.0.0"
   },
@@ -44,6 +59,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.30.1",
     "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "postcss": "^8.4.16",
     "pre-commit": "^1.2.2",
     "prettier": "^2.7.1",

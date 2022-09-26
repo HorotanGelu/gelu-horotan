@@ -1,7 +1,10 @@
 import { Dialog, Transition } from '@headlessui/react'
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useLayoutEffect } from 'react'
 import * as Tabs from '@radix-ui/react-tabs'
 import { motion, AnimatePresence } from 'framer-motion'
+// Hooks
+import { useRouter } from 'next/router'
+import { useAppSelector } from '../store/hooks'
 
 type Props = {
   tabs: {
@@ -11,6 +14,8 @@ type Props = {
 }
 
 const Modal = ({ tabs }: Props) => {
+  const router = useRouter()
+  const isVerified = useAppSelector(state => state.auth.user?.verified)
   const [isOpen, setIsOpen] = useState(false)
   const [activeTab, setActiveTab] = useState(0)
   function closeModal() {
@@ -20,6 +25,12 @@ const Modal = ({ tabs }: Props) => {
   function openModal() {
     setIsOpen(true)
   }
+
+  useLayoutEffect(() => {
+    if (isVerified === false && router.pathname !== '/verified') {
+      router.push('/verified')
+    }
+  }, [router])
 
   return (
     <>
