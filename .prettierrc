@@ -7,7 +7,7 @@
   "semi": false,
   "useTabs": false,
   "tabWidth": 2,
-  "endOfLine": "lf",
+  "endOfLine": "crlf",
   "singleQuote": true,
   "trailingComma": "es5",
   "vueIndentScriptAndStyle": false

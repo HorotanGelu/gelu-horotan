@@ -3,7 +3,7 @@ import { useAppDispatch } from '../../store/hooks'
 import { login } from '../../store/authSlice'
 import Input from './Input'
 
-const LoginForm = ({ onChange }) => {
+const LoginForm = () => {
   const dispatch = useAppDispatch()
   const [formData, setFormData] = useState({
     email: '',
@@ -12,6 +12,9 @@ const LoginForm = ({ onChange }) => {
 
   const { email, password } = formData
 
+  const onChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
   const onSubmit = async e => {
     e.preventDefault()
     dispatch(login({ email, password }))
@@ -25,35 +28,18 @@ const LoginForm = ({ onChange }) => {
   // }, [])
 
   return (
-    <div className='flex flex-col h-80 min-h-full w-full items-center justify-center'>
+    <div className='flex h-full min-h-full w-full items-center justify-center rounded-3xl '>
       <form
-        className='flex flex-col w-full items-center justify-center border-blue-200   gap-5 p-6 rounded-b-3xl'
+        className='flex flex-col  w-full min-h-full items-center justify-center'
         onSubmit={e => onSubmit(e)}
       >
-        <p className='pt-8'>Already a member ? Jump on board.</p>
-        <Input labelName='name' onChangeHandler={onChange}></Input>
-        <input
-          className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-          type='text'
-          name='email'
-          value={email}
-          placeholder='email'
-          onChange={e => onChange(e)}
-        />
-        {/* <input
-          className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-          type='password'
+        <Input name='email' type='text' onChangeHandler={e => onChange(e)} />
+        <Input
           name='password'
-          value={password}
-          placeholder='password'
-          onChange={e => onChange(e)}
-        />
-
-        <input
-          className='inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-          type='submit'
-          value='Login'
-        /> */}
+          type='password'
+          onChangeHandler={e => onChange(e)}
+        />{' '}
+        <input type='submit' className='btn btn-primary' value='Login' />
       </form>
     </div>
   )

@@ -1,24 +1,30 @@
 import React from 'react'
 
-const Input = ({ labelName, onChangeHandler }) => {
+// type Props = {
+//   name: string
+//   onChangeHandler: () => React.ChangeEvent<HTMLInputElement>
+//   type: string
+// }
+
+const Input = ({ name, onChangeHandler, type }) => {
   return (
-    <>
+    <div className='flex flex-col'>
       <label
-        htmlFor={labelName}
-        className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+        htmlFor={name}
+        className=' text-gray-600 cursor-text 
+        // peer-focus:text-xs peer-focus:-top-4
+         peer-focus:text-purple-600 transition-all'
       >
-        {labelName.toUpperCase()}
+        {name.charAt(0).toUpperCase() + name.slice(1)}
       </label>
       <input
-        onChange={e => onChangeHandler(e)}
-        type='text'
-        id={labelName}
-        name='password'
-        className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-        placeholder='John'
-        required
+        type={type}
+        name={name}
+        id={name}
+        className='border-b py-1 outline-none focus:border-purple-600 focus:border-b-2 transition-colors bg-none peer  '
+        onChange={onChangeHandler}
       />
-    </>
+    </div>
   )
 }
 

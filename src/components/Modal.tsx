@@ -3,7 +3,14 @@ import React, { Fragment, useState } from 'react'
 import * as Tabs from '@radix-ui/react-tabs'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const Modal = ({ tabs, children }) => {
+type Props = {
+  tabs: {
+    title: string
+    component: React.ReactNode
+  }[]
+}
+
+const Modal = ({ tabs }: Props) => {
   const [isOpen, setIsOpen] = useState(false)
   const [activeTab, setActiveTab] = useState(0)
   function closeModal() {
@@ -39,7 +46,7 @@ const Modal = ({ tabs, children }) => {
           </Transition.Child>
 
           <div className='fixed inset-0 overflow-y-auto'>
-            <div className='flex  min-h-screen items-center justify-center p-4 text-center'>
+            <div className='flex h-screen  min-h-full items-center justify-center p-4 text-center'>
               <Transition.Child
                 as={Fragment}
                 enter='ease-out duration-300'
@@ -49,18 +56,21 @@ const Modal = ({ tabs, children }) => {
                 leaveFrom='opacity-100 scale-100'
                 leaveTo='opacity-0 scale-95'
               >
-                <Dialog.Panel className='w-full   min-h-full bg-white max-w-md transform overflow-hidden rounded-2xl p-6 text-left align-middle shadow-xl transition-all'>
-                  <Dialog.Title
+                <Dialog.Panel className='w-full h-3/5 bg-secondary_s_2 max-w-md transform overflow-hidden rounded-2xl p-6 text-left align-middle shadow-xl transition-all'>
+                  {/* <Dialog.Title
                     as='h3'
                     className='text-lg font-medium leading-6 text-gray-900 justify-center flex m-8'
                   >
-                    {children}
-                    {/* Become a member */}
-                  </Dialog.Title>
-                  <Tabs.Root defaultValue='tab1' orientation='vertical'>
+                   Become a member 
+                  </Dialog.Title> */}
+                  <Tabs.Root
+                    defaultValue='tab1'
+                    orientation='vertical'
+                    className='flex flex-col h-full  min-h-full '
+                  >
                     <Tabs.List
                       aria-label='tabs example'
-                      className='flex w-full justify-center  '
+                      className='flex w-full justify-center items-center '
                     >
                       {tabs &&
                         tabs.map((tab, index) => {
@@ -95,7 +105,11 @@ const Modal = ({ tabs, children }) => {
                     {tabs &&
                       tabs.map((tab, index) => {
                         return (
-                          <Tabs.Content value={`tab${index + 1}`} key={index}>
+                          <Tabs.Content
+                            value={`tab${index + 1}`}
+                            key={index}
+                            className='grow  '
+                          >
                             {tab.component}
                           </Tabs.Content>
                         )

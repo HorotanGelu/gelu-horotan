@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import * as FaIcons from 'react-icons/fa'
 import Sidebar from './Sidebar'
@@ -8,12 +8,6 @@ import LoginForm from './Form/LoginForm'
 import RegisterForm from './Form/RegisterForm'
 
 const Navigation = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  })
-
-  const { email, password } = formData
   // const isDesktop = useMediaQuery('(min-width: 960px)')
   const navItems = [
     { id: 1, name: 'home' },
@@ -22,12 +16,7 @@ const Navigation = () => {
     { id: 4, name: 'contact' },
     { id: 5, name: 'sign in' },
   ]
-  const onChange = e => {
-    console.log(formData)
-    setFormData(()=> {
-      { ...formData, [e.target.name]: e.target.value }
-    })
-  }
+
   return (
     <>
       <nav
@@ -45,16 +34,14 @@ const Navigation = () => {
                     tabs={[
                       {
                         title: 'Account',
-                        component: <LoginForm onChange={onChange}></LoginForm>,
+                        component: <LoginForm></LoginForm>,
                       },
                       {
                         title: 'Register',
                         component: <RegisterForm></RegisterForm>,
                       },
                     ]}
-                  >
-                    <h2>GH</h2>
-                  </Modal>
+                  ></Modal>
                 )}
                 {item.name !== 'sign in' && (
                   <Link href={`/${item.name === 'home' ? '' : item.name}`}>
