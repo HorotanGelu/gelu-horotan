@@ -58,7 +58,7 @@ const authSlice = createSlice({
       state.loading = false
       state.user = payload
     },
-    logout: state => {
+    clearUser: state => {
       localStorage.removeItem('token')
       state.token = null
       state.user = null
@@ -75,6 +75,7 @@ const {
   authError,
   loginSuccess,
   loginFail,
+  clearUser,
 } = authSlice.actions
 export default authSlice.reducer
 
@@ -145,3 +146,7 @@ export const login =
       dispatch(loginFail())
     }
   }
+
+export const logout = () => (dispatch: Dispatch) => {
+  dispatch(clearUser())
+}
