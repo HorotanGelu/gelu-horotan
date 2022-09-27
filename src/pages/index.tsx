@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import Button from '../components/Button'
+import Logo from '../components/svgs/Logo'
 
 export default function Home() {
   const myRef = useRef<HTMLDivElement>(null)
@@ -34,13 +35,7 @@ export default function Home() {
           </Button>
         </div>
 
-        {/* <video
-          autoPlay
-          muted
-          className=' w-[75%] theme-color   absolute -right-28'
-        >
-          <source src={'/macbook.webm'} type='video/webm'></source>
-        </video> */}
+        <Logo size={256}></Logo>
       </div>
       <div
         ref={myRef}

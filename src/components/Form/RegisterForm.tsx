@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { setAlert } from '../../store/alertSlice'
 import { useAppDispatch } from '../../store/hooks'
 import { register, loadUser } from '../../store/authSlice'
@@ -21,12 +21,12 @@ const RegisterForm = () => {
   const onSubmit = async e => {
     e.preventDefault()
     if (password !== password2) {
-      dispatch(setAlert('Registration failed.', 'test'))
+      dispatch(setAlert('Registration failed.', 'Password didnt matched'))
     } else {
       dispatch(register({ name, email, password }))
     }
   }
-
+  console.log(formData)
   // useEffect(() => {
   //   dispatch(loadUser())
   // }, [dispatch])
@@ -45,10 +45,11 @@ const RegisterForm = () => {
           onChangeHandler={e => onChange(e)}
         />
         <Input
-          name='Confirm password'
+          name='password2'
           type='password'
           onChangeHandler={e => onChange(e)}
         />
+        <input type='submit' className='btn btn-primary' value='Register' />
       </form>
     </div>
   )

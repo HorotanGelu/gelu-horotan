@@ -18,10 +18,10 @@ const Sidebar = () => {
       <div
         className={`${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } w-full h-screen z-10 bg-black absolute opacity-50 `}
+        } w-full h-screen z-10 bg-black absolute opacity-50  `}
         onClick={handleOpenState}
       ></div>
-      <div className=' absolute left-7 z-30 mt-4'>
+      <div className=' absolute left-7 z-30 mt-4 md:hidden'>
         <FiIcons.FiBarChart2
           className='rotate-90  text-amaranth'
           size={30}

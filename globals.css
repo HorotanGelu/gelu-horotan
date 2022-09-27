@@ -10,7 +10,7 @@
     @apply relative flex items-center justify-center   mt-2 mb-2    transition-all duration-200 ease-in-out;
   }
   .navigation-item {
-    @apply text-white uppercase cursor-pointer;
+    @apply dark:text-primary_t_2 text-secondary_t_2 uppercase cursor-pointer;
   }
 
   .theme-color {
@@ -23,7 +23,7 @@
   h5,
   h6,
   p {
-    @apply font-semibold;
+    @apply font-medium;
   }
 
   h1,

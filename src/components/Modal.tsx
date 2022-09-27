@@ -11,9 +11,10 @@ type Props = {
     title: string
     component: React.ReactNode
   }[]
+  children: React.ReactNode
 }
 
-const Modal = ({ tabs }: Props) => {
+const Modal = ({ tabs, children }: Props) => {
   const router = useRouter()
   const isVerified = useAppSelector(state => state.auth.user?.verified)
   const [isOpen, setIsOpen] = useState(false)
@@ -27,10 +28,14 @@ const Modal = ({ tabs }: Props) => {
   }
 
   useLayoutEffect(() => {
-    if (isVerified === false && router.pathname !== '/verified') {
+    if (
+      isVerified === false &&
+      router.pathname !== '/verified' &&
+      localStorage.token
+    ) {
       router.push('/verified')
     }
-  }, [router])
+  }, [router, localStorage.token])
 
   return (
     <>
@@ -38,7 +43,7 @@ const Modal = ({ tabs }: Props) => {
         onClick={openModal}
         className='rounded-md bg-opacity-20 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75'
       >
-        SIGN IN
+        {children}
       </div>
 
       <Transition appear show={isOpen} as={Fragment}>
