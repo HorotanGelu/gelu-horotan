@@ -8,6 +8,7 @@ import RegisterForm from './Form/RegisterForm'
 import Logo from './svgs/Logo'
 
 import { useAppSelector } from '../store/hooks'
+import Dropdown from './Dropdown'
 
 const Navigation = () => {
   const auth = useAppSelector(state => state.auth)
@@ -56,7 +57,9 @@ const Navigation = () => {
               <li className='navigation-item '>SIGN IN</li>
             </Modal>
           ) : (
-            <li className='navigation-item'>{auth?.user?.name}</li>
+            <Dropdown>
+              <li className='navigation-item'>{auth?.user?.name}</li>
+            </Dropdown>
           )}
           <li>
             <DarkMode />

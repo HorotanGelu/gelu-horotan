@@ -31,7 +31,10 @@ export const store = configureStore({
   // We re using the persisted reducer function here
   reducer: persistedReducer,
   devTools: process.env.NODE_ENV !== 'production',
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }).concat(logger),
 })
 
 export type RootState = ReturnType<typeof store.getState>

@@ -47,8 +47,8 @@ const Sidebar = () => {
   )
 }
 
-const SideBarIcon = ({ icon, name, key }) => (
-  <div className='sidebar-item-container' key={key}>
+const SideBarIcon = ({ icon, name }) => (
+  <div className='sidebar-item-container'>
     <div className='sidebar-icon '>
       {icon}
       {/* &lt;/&gt; */}
