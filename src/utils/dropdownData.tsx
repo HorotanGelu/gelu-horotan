@@ -13,9 +13,10 @@ export const ddProfileData = {
     },
 
     {
-      name: 'Support',
+      name: 'Report a bug',
       to: '/about',
     },
+
     {
       name: 'Log out',
       to: '/#',

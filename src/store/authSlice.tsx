@@ -31,7 +31,6 @@ const authSlice = createSlice({
       state.token = action.payload.token
       state.isAuthenticated = true
       state.loading = false
-      console.log('success')
     },
     registerFail: state => {
       localStorage.removeItem('token')

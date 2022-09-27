@@ -26,7 +26,7 @@ const Navigation = () => {
     <>
       <nav
         className={
-          ' flex flex-row  w-full py-3 px-8  justify-between bg-primary dark:bg-secondary border border-b-primary_t_2 dark:border-b-secondary_s_2 z-30 items-center'
+          ' flex flex-row  w-full py-3 px-8  justify-between bg-primary dark:bg-secondary   items-center'
         }
       >
         <ul className='flex flex-row w-1/2 justify-between items-center'>
@@ -58,7 +58,12 @@ const Navigation = () => {
               <li className='navigation-item '>SIGN IN</li>
             </Modal>
           ) : (
-            <Dropdown data={ddProfileData}>{auth?.user?.name}</Dropdown>
+            <Dropdown
+              data={ddProfileData}
+              header={`Signed in as ${auth.user.email}`}
+            >
+              {auth.user?.name}
+            </Dropdown>
           )}
           <li>
             <DarkMode />

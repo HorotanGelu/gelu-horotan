@@ -26,7 +26,7 @@ const RegisterForm = () => {
       dispatch(register({ name, email, password }))
     }
   }
-  console.log(formData)
+
   // useEffect(() => {
   //   dispatch(loadUser())
   // }, [dispatch])
