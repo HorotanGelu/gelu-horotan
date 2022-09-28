@@ -36,7 +36,7 @@ const LoginForm = ({ className, rounded }: Props) => {
 
   return (
     <form
-      className={`${className} flex flex-col bg-primary_t  gap-8 h-full   px-20 py-12 ${
+      className={`${className} flex flex-col   gap-8 h-full   px-20 py-12 ${
         rounded ? 'rounded-[3rem]' : ''
       }  overflow-hidden items-center justify-center relative `}
       onSubmit={e => onSubmit(e)}
@@ -49,7 +49,7 @@ const LoginForm = ({ className, rounded }: Props) => {
         onChangeHandler={e => onChange(e)}
       />{' '}
       <Button
-        className='bg-blue-400 px-8 py-2 text-secondary_t_2  w-1/2 rounded-3xl'
+        className='bg-amaranth px-8 py-2 text-secondary_t_2  w-1/2 rounded-3xl'
         type='submit'
       >
         Login

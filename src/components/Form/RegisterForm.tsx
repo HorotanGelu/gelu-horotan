@@ -41,7 +41,7 @@ const RegisterForm = ({ className, rounded }: Props) => {
 
   return (
     <form
-      className={`${className} flex flex-col bg-primary_t  gap-8   px-20 py-12 ${
+      className={`${className} flex flex-col   gap-8 h-full   px-20 py-12 ${
         rounded ? 'rounded-[3rem]' : ''
       }  overflow-hidden items-center justify-center relative `}
       onSubmit={e => onSubmit(e)}
