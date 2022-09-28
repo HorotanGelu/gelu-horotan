@@ -60,9 +60,9 @@ const Navigation = () => {
           ) : (
             <Dropdown
               data={ddProfileData}
-              header={`Signed in as ${auth.user.email}`}
+              header={`Signed in as ${auth.user?.email}`}
             >
-              {auth.user?.name}
+              {auth.user?.firstName}&nbsp;{auth.user?.lastName}
             </Dropdown>
           )}
           <li>

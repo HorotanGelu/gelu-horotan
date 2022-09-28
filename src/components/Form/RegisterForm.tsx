@@ -8,13 +8,14 @@ const RegisterForm = () => {
   // const alerts = useSelector(state => state.alerts)
   const dispatch = useAppDispatch()
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     password2: '',
   })
 
-  const { name, email, password, password2 } = formData
+  const { firstName, lastName, email, password, password2 } = formData
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
@@ -23,7 +24,7 @@ const RegisterForm = () => {
     if (password !== password2) {
       dispatch(setAlert('Registration failed.', 'Password didnt matched'))
     } else {
-      dispatch(register({ name, email, password }))
+      dispatch(register({ firstName, lastName, email, password }))
     }
   }
 
@@ -37,7 +38,8 @@ const RegisterForm = () => {
         className='flex flex-col w-full items-center justify-center gap-5  p-6 rounded-3xl'
         onSubmit={e => onSubmit(e)}
       >
-        <Input type='text' name='name' onChangeHandler={onChange}></Input>
+        <Input type='text' name='firstName' onChangeHandler={onChange}></Input>
+        <Input type='text' name='lastName' onChangeHandler={onChange}></Input>
         <Input name='email' type='text' onChangeHandler={e => onChange(e)} />
         <Input
           name='password'
