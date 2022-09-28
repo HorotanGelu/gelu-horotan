@@ -16,6 +16,9 @@
   .theme-color {
     @apply bg-primary dark:bg-secondary;
   }
+  .container {
+    @apply bg-primary dark:bg-secondary text-secondary_s_2 dark:text-primary_s_2 min-w-full w-full h-screen;
+  }
 
   h2,
   h3,
@@ -25,16 +28,6 @@
   p {
     @apply font-medium;
   }
-
-  /* h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p {
-    @apply text-primary_t dark:text-secondary_s_2;
-  } */
 
   h1 {
     @apply text-6xl font-bold tracking-wider;

@@ -9,11 +9,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary_s_2: '#131313',
-        primary_s: '#161616',
-        primary: '#181818',
-        primary_t: '#2f2f2f',
-        primary_t_2: '#464646',
+        primary_s_2: '#0d061a',
+        primary_s: '#0e061d',
+        primary: '#100720',
+        primary_t: '#282036',
+        primary_t_2: '#40394d',
         secondary_s_2: '#b7b7b7',
         secondary_s: '#cecece',
         secondary: '#E5E5E5',

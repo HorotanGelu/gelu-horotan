@@ -26,7 +26,7 @@ const Navigation = () => {
     <>
       <nav
         className={
-          ' flex flex-row  w-full py-3 px-8  justify-between bg-primary dark:bg-secondary   items-center'
+          ' flex flex-row fixed w-full py-3 px-8  justify-between bg-primary dark:bg-secondary   items-center'
         }
       >
         <ul className='flex flex-row w-1/2 justify-between items-center'>
