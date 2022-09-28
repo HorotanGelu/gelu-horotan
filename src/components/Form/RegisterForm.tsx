@@ -1,10 +1,17 @@
 import React, { useState } from 'react'
 import { setAlert } from '../../store/alertSlice'
 import { useAppDispatch } from '../../store/hooks'
-import { register, loadUser } from '../../store/authSlice'
+import { register } from '../../store/authSlice'
 import Input from './Input'
+import Button from '../Button'
+import Logo from '../svgs/Logo'
 
-const RegisterForm = () => {
+type Props = {
+  className?: string
+  rounded?: boolean
+}
+
+const RegisterForm = ({ className, rounded }: Props) => {
   // const alerts = useSelector(state => state.alerts)
   const dispatch = useAppDispatch()
   const [formData, setFormData] = useState({
@@ -33,27 +40,39 @@ const RegisterForm = () => {
   // }, [dispatch])
 
   return (
-    <div className='flex  flex-col h-80 min-h-full w-full items-center justify-center '>
-      <form
-        className='flex flex-col w-full items-center justify-center gap-5  p-6 rounded-3xl'
-        onSubmit={e => onSubmit(e)}
-      >
+    <form
+      className={`${className} flex flex-col bg-primary_t  gap-8   px-20 py-12 ${
+        rounded ? 'rounded-[3rem]' : ''
+      }  overflow-hidden items-center justify-center relative `}
+      onSubmit={e => onSubmit(e)}
+    >
+      <Logo className='  z-10' size={32} />
+      <div className='flex gap-8'>
         <Input type='text' name='firstName' onChangeHandler={onChange}></Input>
         <Input type='text' name='lastName' onChangeHandler={onChange}></Input>
+      </div>
+      <div className='flex gap-8'>
         <Input name='email' type='text' onChangeHandler={e => onChange(e)} />
         <Input
           name='password'
           type='password'
           onChangeHandler={e => onChange(e)}
         />
-        <Input
-          name='password2'
-          type='password'
-          onChangeHandler={e => onChange(e)}
-        />
-        <input type='submit' className='btn btn-primary' value='Register' />
-      </form>
-    </div>
+      </div>
+      <div className='flex gap-8'></div>
+      <Input
+        name='password2'
+        type='password'
+        onChangeHandler={e => onChange(e)}
+      />
+
+      <Button
+        className='bg-blue-400 px-8 py-2 text-secondary_t_2  w-1/2 rounded-3xl'
+        type='submit'
+      >
+        Register
+      </Button>
+    </form>
   )
 }
 

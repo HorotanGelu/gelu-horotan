@@ -12,7 +12,9 @@ const Button = ({ children, className, rounded, handler, type }: Props) => {
   return (
     <button
       type={type}
-      className={`${className} ${rounded && 'rounded-full'} w-max `}
+      className={`${className} ${
+        rounded && 'rounded-full'
+      } w-max items-center justify-center flex  `}
       onClick={handler}
     >
       {children}

@@ -2,14 +2,16 @@ import React from 'react'
 
 type Props = {
   size: number
+  className?: string
 }
 
-const Logo = ({ size }: Props) => {
+const Logo = ({ size, className }: Props) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       width={size}
       viewBox='0 0 135.97 120.779'
+      className={className}
     >
       <g id='Layer_1-2' transform='translate(0 -0.001)'>
         <g id='Group_1' data-name='Group 1'>

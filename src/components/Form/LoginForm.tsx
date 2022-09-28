@@ -2,8 +2,15 @@ import React, { useState } from 'react'
 import { useAppDispatch } from '../../store/hooks'
 import { login } from '../../store/authSlice'
 import Input from './Input'
+import Button from '../Button'
+import Logo from '../svgs/Logo'
 
-const LoginForm = () => {
+type Props = {
+  className?: string
+  rounded?: boolean
+}
+
+const LoginForm = ({ className, rounded }: Props) => {
   const dispatch = useAppDispatch()
   const [formData, setFormData] = useState({
     email: '',
@@ -29,16 +36,24 @@ const LoginForm = () => {
 
   return (
     <form
-      className='flex flex-col bg-secondary_s_2  h-96 p-20 rounded-3xl gap-16 overflow-hidden items-center justify-center'
+      className={`${className} flex flex-col bg-primary_t  gap-8 h-full   px-20 py-12 ${
+        rounded ? 'rounded-[3rem]' : ''
+      }  overflow-hidden items-center justify-center relative `}
       onSubmit={e => onSubmit(e)}
     >
+      <Logo className='  z-10' size={32} />
       <Input name='email' type='text' onChangeHandler={e => onChange(e)} />
       <Input
         name='password'
         type='password'
         onChangeHandler={e => onChange(e)}
       />{' '}
-      <input type='submit' className='btn btn-primary' value='Login' />
+      <Button
+        className='bg-blue-400 px-8 py-2 text-secondary_t_2  w-1/2 rounded-3xl'
+        type='submit'
+      >
+        Login
+      </Button>
     </form>
   )
 }
