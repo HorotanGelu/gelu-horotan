@@ -10,6 +10,7 @@ import Logo from './svgs/Logo'
 import { useAppSelector } from '../store/hooks'
 import Dropdown from './Dropdown'
 import { ddProfileData } from '../utils/dropdownData'
+import Avatar from './Avatar'
 
 const Navigation = () => {
   const auth = useAppSelector(state => state.auth)
@@ -48,11 +49,17 @@ const Navigation = () => {
               <Link href='/signin'>SIGN IN</Link>
             </li>
           ) : (
-            <Dropdown
-              data={ddProfileData}
-              header={`Signed in as ${auth.user?.email}`}
-            >
-              {auth.user?.firstName}&nbsp;{auth.user?.lastName}
+            <Dropdown data={ddProfileData} header={`${auth.user?.email}`}>
+              <span className='text-secondary dark:text-primary'>
+                {auth.user?.firstName}&nbsp;
+                {auth.user?.lastName}
+              </span>
+              <Avatar
+                letters={
+                  auth.user?.firstName.slice(0, 1) +
+                  auth.user?.lastName.slice(0, 1)
+                }
+              />
             </Dropdown>
           )}
           <li>

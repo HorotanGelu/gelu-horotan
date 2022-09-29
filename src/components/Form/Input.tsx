@@ -21,6 +21,7 @@ const Input = ({ name, onChangeHandler, type }) => {
         type={type}
         name={name}
         id={name}
+        autoComplete='off'
         className='text-secondary dark:text-primary border-b-2 border-secondary dark:border-primary bg-transparent  p-2  outline-none focus:border-amaranth_s_2  transition-all ease-in-out duration-250  peer :focus:bg-transparent  '
         onChange={onChangeHandler}
       />
