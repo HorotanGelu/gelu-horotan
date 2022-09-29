@@ -43,20 +43,10 @@ const Navigation = () => {
         </ul>
         <ul className='flex w-1/5 items-center justify-between'>
           {!isAuthenticated ? (
-            <Modal
-              tabs={[
-                {
-                  title: 'Account',
-                  component: <LoginForm></LoginForm>,
-                },
-                {
-                  title: 'Register',
-                  component: <RegisterForm></RegisterForm>,
-                },
-              ]}
-            >
-              <li className='navigation-item '>SIGN IN</li>
-            </Modal>
+            <li className='navigation-item '>
+              {' '}
+              <Link href='/signin'>SIGN IN</Link>
+            </li>
           ) : (
             <Dropdown
               data={ddProfileData}
