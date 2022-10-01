@@ -19,7 +19,7 @@ const Tabs = ({ items, setActiveTab }: Items) => {
             <Tab
               key={index}
               className={
-                'ui-selected:bg-amaranth_t_2   bg-amaranth_s_2   text-secondary   focus:outline-none w-full   py-2.5 font-medium leading-5  uppercase transition-all ease-in-out duration-250'
+                'ui-selected:bg-accent_t_2 ui-selected:text-primary_s   bg-accent_s_2   text-secondary   focus:outline-none w-full   py-2.5 font-medium leading-5  uppercase transition-all ease-in-out duration-250'
               }
               onClick={() => {
                 setActiveTab(index)

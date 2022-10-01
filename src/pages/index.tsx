@@ -17,17 +17,14 @@ export default function Home() {
           'flex  justify-start items-center w-full h-screen theme-color '
         }
       >
-        <div className='flex flex-col w-[45%] p-20'>
-          <h1 className=' text-primary_t_2  p-2'>
-            <span className='text-secondary dark:text-primary'>
-              {' '}
-              Gelu Horotan
-            </span>{' '}
-            <br /> Frontend Web Developer
+        <div className='flex flex-col w-1/2 p-20'>
+          <h1 className='text-secondary dark:text-primary   p-2'>
+            Gelu Horotan
+            <span className='text-accent_s'> Software Developer</span>
           </h1>
           <Button
             rounded
-            className=' bg-amaranth text-secondary  p-2'
+            className=' bg-accent text-secondary  p-2'
             type='button'
             handler={executeScroll}
           >

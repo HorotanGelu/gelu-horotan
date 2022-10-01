@@ -23,7 +23,7 @@ const Sidebar = () => {
       ></div>
       <div className=' absolute left-7 z-30 mt-4 md:hidden'>
         <FiIcons.FiBarChart2
-          className='rotate-90  text-amaranth'
+          className='rotate-90  text-accent'
           size={30}
           onClick={handleOpenState}
         />

@@ -14,7 +14,7 @@ const Button = ({ children, className, rounded, handler, type }: Props) => {
       type={type}
       className={`${className} ${
         rounded && 'rounded-full'
-      } w-max items-center justify-center flex  `}
+      } w-max items-center justify-center flex text-primary `}
       onClick={handler}
     >
       {children}

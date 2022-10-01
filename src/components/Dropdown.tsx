@@ -63,7 +63,7 @@ const Dropdown = ({ children, data, header }: Props) => {
                       <CustomLink
                         href={category.to}
                         className={
-                          ' text-primary  group flex flex-col  items-start rounded-md text-sm w-full h-max text-left p-2 ui-active:bg-amaranth_t_2 ui-active:text-secondary transition-all ease-in-out ui-active:translate-x-1 duration-200 '
+                          ' text-primary  group flex flex-col  items-start rounded-md text-sm w-full h-max text-left p-2 ui-active:bg-accent_t_2 ui-active:text-secondary transition-all ease-in-out ui-active:translate-x-1 duration-200 '
                         }
                         onClick={() => {
                           dispatch(logout())

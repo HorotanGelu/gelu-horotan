@@ -29,7 +29,7 @@ const Signin = () => {
           <LoginIllustration
             size={600}
             fillClassName='fill-primary_t_2'
-            secClassName='fill-amaranth dark:fill-secondary_s_2'
+            secClassName='fill-accent dark:fill-secondary_s_2'
           />
         )}
         {activeTab === 1 && (

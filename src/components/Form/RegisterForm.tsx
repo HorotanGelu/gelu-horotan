@@ -88,7 +88,7 @@ const RegisterForm = ({ className, rounded }: Props) => {
       />
 
       <Button
-        className='bg-amaranth px-8 py-2 text-secondary_t_2  w-1/2 rounded-3xl'
+        className='bg-accent px-8 py-2   w-1/2 rounded-3xl  '
         type='submit'
       >
         Register

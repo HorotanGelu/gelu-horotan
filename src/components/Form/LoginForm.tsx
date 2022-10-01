@@ -48,10 +48,7 @@ const LoginForm = ({ className, rounded }: Props) => {
         type='password'
         onChangeHandler={e => onChange(e)}
       />{' '}
-      <Button
-        className='bg-amaranth px-8 py-2 text-secondary_t_2  w-1/2 rounded-3xl'
-        type='submit'
-      >
+      <Button className='bg-accent px-8 py-2   w-1/2 rounded-3xl' type='submit'>
         Login
       </Button>
     </form>
