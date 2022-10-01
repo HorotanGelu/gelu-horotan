@@ -12,9 +12,17 @@ import Dropdown from './Dropdown'
 import { ddProfileData } from '../utils/dropdownData'
 import Avatar from './Avatar'
 
+type Auth = {
+  isAuthenticated: boolean | null
+  user: {
+    firstName: string
+    lastName: string
+  } | null
+}
+
 const Navigation = () => {
   const auth = useAppSelector(state => state.auth)
-  const { isAuthenticated } = auth
+  const { isAuthenticated, user }: Auth = auth
   // const isDesktop = useMediaQuery('(min-width: 960px)')
   const navItems = [
     { id: 1, name: 'home' },
@@ -49,16 +57,13 @@ const Navigation = () => {
               <Link href='/signin'>SIGN IN</Link>
             </li>
           ) : (
-            <Dropdown data={ddProfileData} header={`${auth.user?.email}`}>
+            <Dropdown data={ddProfileData} header={`${user.email}`}>
               <span className='text-secondary dark:text-primary'>
-                {auth.user?.firstName}&nbsp;
-                {auth.user?.lastName}
+                {user.firstName}&nbsp;
+                {user.lastName}
               </span>
               <Avatar
-                letters={
-                  auth.user?.firstName.slice(0, 1) +
-                  auth.user?.lastName.slice(0, 1)
-                }
+                letters={user.firstName.slice(0, 1) + user.lastName.slice(0, 1)}
               />
             </Dropdown>
           )}

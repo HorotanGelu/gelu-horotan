@@ -29,7 +29,7 @@ const authSlice = createSlice({
     registerSuccess: (state, action) => {
       localStorage.setItem('token', action.payload.token)
       state.token = action.payload.token
-      state.isAuthenticated = true
+      state.isAuthenticated = false
       state.loading = false
     },
     registerFail: state => {
@@ -105,7 +105,9 @@ export const register =
         body,
         config
       )
-
+      dispatch(
+        setAlert('Your account has been created succesfully!', 'success')
+      )
       dispatch(registerSuccess(res.data))
       dispatch(userLoaded(res.data))
     } catch (err) {
@@ -129,7 +131,7 @@ export const login =
 
     try {
       const res = await axios.post('http://localhost:5000/api/auth', body)
-
+      dispatch(setAlert(`You've logged in succesfully`, 'success'))
       dispatch(loginSuccess(res.data))
       dispatch(loadUser())
     } catch (err) {

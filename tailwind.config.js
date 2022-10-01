@@ -23,7 +23,7 @@ module.exports = {
         secondary_t_2: '#eaeaea',
         amaranth_s_2: '#7f2253',
         amaranth_s: '#8f275e',
-        amaranth: '#9F2B68',
+        amaranth: '#F70040',
         amaranth_t: '#a94077',
         amaranth_t_2: '#b25586',
         byz_s_2: '#6a2a5e',

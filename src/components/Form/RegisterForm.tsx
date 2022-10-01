@@ -47,22 +47,43 @@ const RegisterForm = ({ className, rounded }: Props) => {
       onSubmit={e => onSubmit(e)}
     >
       <Logo className='  z-10' size={32} />
-      <div className='flex gap-8'>
-        <Input type='text' name='firstName' onChangeHandler={onChange}></Input>
-        <Input type='text' name='lastName' onChangeHandler={onChange}></Input>
-      </div>
-      <div className='flex gap-8'>
-        <Input name='email' type='text' onChangeHandler={e => onChange(e)} />
-        <Input
-          name='password'
-          type='password'
-          onChangeHandler={e => onChange(e)}
-        />
-      </div>
-      <div className='flex gap-8'></div>
+
+      <Input
+        type='text'
+        name='firstName'
+        label='First name'
+        errorMsg={`First name must be between 3-16 characters and shouldn't include any special characters.`}
+        onChangeHandler={onChange}
+      ></Input>
+      <Input
+        type='text'
+        name='lastName'
+        label='Last name'
+        errorMsg={`Last name must be between 3-16 characters and shouldn't include any special characters.`}
+        onChangeHandler={onChange}
+      ></Input>
+
+      <Input
+        name='email'
+        type='text'
+        label='Email'
+        errorMsg={`Email should be a valid email.`}
+        onChangeHandler={e => onChange(e)}
+      />
+      <Input
+        name='password'
+        type='password'
+        label='Password'
+        errorMsg={`Password must be atleast anywhere between 6-24 characters and should include special characters.`}
+        onChangeHandler={e => onChange(e)}
+      />
+
       <Input
         name='password2'
         type='password'
+        label='Check password'
+        pattern={password}
+        errorMsg={`Passwords must be the same.`}
         onChangeHandler={e => onChange(e)}
       />
 
