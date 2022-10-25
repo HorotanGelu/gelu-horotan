@@ -8,15 +8,44 @@ import Avatar from './Avatar'
 import { useAuth } from '../context/customHooks/useAuth'
 
 const Navigation = () => {
-  const { isAuthenticated, user } = useAuth()
+  const { isAuthenticated, user, logout } = useAuth()
 
-  // const isDesktop = useMediaQuery('(min-width: 960px)')
   const navItems = [
     { id: 1, name: 'home' },
     { id: 2, name: 'about' },
     { id: 3, name: 'projects' },
     { id: 4, name: 'contact' },
   ]
+
+  const dropdownData = {
+    header: 'Signed in as',
+    items: [
+      {
+        name: 'Profile',
+        to: '/about',
+        id: 1,
+      },
+      {
+        name: 'Settings',
+        to: '/about',
+        id: 2,
+      },
+
+      {
+        name: 'Report a bug',
+        to: '/about',
+        id: 3,
+      },
+
+      {
+        name: 'Log out',
+        to: '#',
+        isNew: true,
+        id: 4,
+        action: logout,
+      },
+    ],
+  }
 
   return (
     <>
@@ -44,7 +73,7 @@ const Navigation = () => {
               <Link href='/signin'>SIGN IN</Link>
             </li>
           ) : (
-            <Dropdown header={`${user.email}`}>
+            <Dropdown data={dropdownData} title={`${user.email}`}>
               <span className='text-secondary dark:text-primary'>
                 {user.firstName}&nbsp;
                 {user.lastName}
