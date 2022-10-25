@@ -1,28 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
 import Sidebar from './Sidebar'
-import Modal from './Modal'
-import DarkMode from './DarkMode'
-import LoginForm from './Form/LoginForm'
-import RegisterForm from './Form/RegisterForm'
 import Logo from './svgs/Logo'
 
-import { useAppSelector } from '../store/hooks'
 import Dropdown from './Dropdown'
-import { ddProfileData } from '../utils/dropdownData'
 import Avatar from './Avatar'
-
-type Auth = {
-  isAuthenticated: boolean | null
-  user: {
-    firstName: string
-    lastName: string
-  } | null
-}
+import { useAuth } from '../context/customHooks/useAuth'
 
 const Navigation = () => {
-  const auth = useAppSelector(state => state.auth)
-  const { isAuthenticated, user }: Auth = auth
+  const { isAuthenticated, user } = useAuth()
+
   // const isDesktop = useMediaQuery('(min-width: 960px)')
   const navItems = [
     { id: 1, name: 'home' },
@@ -38,7 +25,7 @@ const Navigation = () => {
           ' flex flex-row fixed w-full py-3 px-8  justify-between bg-primary dark:bg-secondary   items-center'
         }
       >
-        <ul className='flex flex-row w-1/2 justify-between items-center'>
+        <ul className='flex flex-row w-1/2 justify-between items-center '>
           <Logo size={36} />
           {navItems?.map(item => {
             return (
@@ -57,7 +44,7 @@ const Navigation = () => {
               <Link href='/signin'>SIGN IN</Link>
             </li>
           ) : (
-            <Dropdown data={ddProfileData} header={`${user.email}`}>
+            <Dropdown header={`${user.email}`}>
               <span className='text-secondary dark:text-primary'>
                 {user.firstName}&nbsp;
                 {user.lastName}
@@ -67,9 +54,6 @@ const Navigation = () => {
               />
             </Dropdown>
           )}
-          <li>
-            <DarkMode />
-          </li>
         </ul>
       </nav>
 

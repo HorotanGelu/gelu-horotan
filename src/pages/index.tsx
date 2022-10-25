@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import Button from '../components/Button'
 import Logo from '../components/svgs/Logo'
+import { useAuth } from '../context/customHooks/useAuth'
 
 export default function Home() {
   const myRef = useRef<HTMLDivElement>(null)

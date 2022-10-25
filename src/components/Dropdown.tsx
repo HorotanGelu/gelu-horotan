@@ -1,23 +1,10 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { Menu } from '@headlessui/react'
-import { useAppDispatch } from '../store/hooks'
-import { logout } from '../store/authSlice'
 
 type Props = {
   children: React.ReactNode
   header?: string
-  data: {
-    header: {
-      text: string
-    }[]
-    categories: {
-      name: string
-      isNew?: boolean
-      to?: string
-      action?: () => void
-    }[]
-  }
 }
 
 type LinkProps = {
@@ -41,8 +28,7 @@ const CustomLink = React.forwardRef<HTMLAnchorElement, LinkProps>(
 )
 
 CustomLink.displayName = 'CustomLink'
-const Dropdown = ({ children, data, header }: Props) => {
-  const dispatch = useAppDispatch()
+const Dropdown = ({ children, header }: Props) => {
   return (
     <div className=' text-right'>
       <Menu as='div' className='relative inline-block '>
@@ -52,29 +38,16 @@ const Dropdown = ({ children, data, header }: Props) => {
         <Menu.Items className='absolute right-0 mt-2 w-max p-4 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
           {header && header}
           <div className='px-1 py-1 '>
-            {data &&
-              data.categories?.map((category, index) => {
-                return (
-                  <>
-                    {category?.isNew && (
-                      <div className='w-full border  bg-black'></div>
-                    )}
-                    <Menu.Item key={index}>
-                      <CustomLink
-                        href={category.to}
-                        className={
-                          ' text-primary  group flex flex-col  items-start rounded-md text-sm w-full h-max text-left p-2 ui-active:bg-accent_t_2 ui-active:text-secondary transition-all ease-in-out ui-active:translate-x-1 duration-200 '
-                        }
-                        onClick={() => {
-                          dispatch(logout())
-                        }}
-                      >
-                        {category.name}
-                      </CustomLink>
-                    </Menu.Item>
-                  </>
-                )
-              })}
+            <Menu.Item>
+              <CustomLink
+                href='#'
+                className={
+                  ' text-primary  group flex flex-col  items-start rounded-md text-sm w-full h-max text-left p-2 ui-active:bg-accent_t_2 ui-active:text-secondary transition-all ease-in-out ui-active:translate-x-1 duration-200 '
+                }
+              >
+                TEST
+              </CustomLink>
+            </Menu.Item>
           </div>
         </Menu.Items>
       </Menu>

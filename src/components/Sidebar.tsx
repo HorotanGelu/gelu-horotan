@@ -47,7 +47,12 @@ const Sidebar = () => {
   )
 }
 
-const SideBarIcon = ({ icon, name }) => (
+type SidebarProps = {
+  name: string
+  icon: React.ReactNode
+}
+
+const SideBarIcon = ({ icon, name }: SidebarProps) => (
   <div className='sidebar-item-container'>
     <div className='sidebar-icon '>
       {icon}

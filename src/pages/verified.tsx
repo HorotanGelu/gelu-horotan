@@ -1,9 +1,6 @@
 import React from 'react'
 import MailVerificationSvg from '../components/svgs/MailVerificationSvg'
 
-// Private routing
-import withPrivateRoute from '../components/withPrivateRoute'
-
 const Verified = () => {
   return (
     <div className='theme-color min-h-screen flex flex-col justify-center items-center gap-12'>
@@ -24,4 +21,4 @@ const Verified = () => {
   )
 }
 
-export default withPrivateRoute(Verified)
+export default Verified
