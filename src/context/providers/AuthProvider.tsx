@@ -175,6 +175,7 @@ export const AuthProvider = ({ children }: Props) => {
         },
       })
       localStorage.setItem('user', JSON.stringify(res.data))
+      setIsAuthenticated(true)
       setUser(res.data)
       setError(undefined)
       setIsLoading(false)

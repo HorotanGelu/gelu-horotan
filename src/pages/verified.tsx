@@ -1,5 +1,6 @@
 import React from 'react'
 import MailVerificationSvg from '../components/svgs/MailVerificationSvg'
+import { GetStaticPaths, GetStaticProps } from 'next'
 
 const Verified = () => {
   return (
@@ -20,5 +21,7 @@ const Verified = () => {
     </div>
   )
 }
+
+export const getStaticProps: GetStaticProps = async () => ({ props: {} })
 
 export default Verified

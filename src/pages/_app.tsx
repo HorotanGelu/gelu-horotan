@@ -3,13 +3,16 @@ import React from 'react'
 import '../../globals.css'
 import { Providers } from '../context/Providers'
 import Navigation from '../components/Navigation'
+import { RouteShield } from '../components/RouteShield'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Providers>
         <Navigation />
-        <Component {...pageProps} />
+        <RouteShield>
+          <Component {...pageProps} />
+        </RouteShield>
       </Providers>
     </>
   )

@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 // Components
 import LoginForm from '../components/Form/LoginForm'
@@ -6,9 +7,18 @@ import RegisterForm from '../components/Form/RegisterForm'
 import LoginIllustration from '../components/svgs/LoginIllustration'
 import RegisterIllustration from '../components/svgs/RegisterIllustration'
 import Tabs from '../components/Tabs'
+import { useAuth } from '../context/customHooks/useAuth'
 
 const Signin = () => {
   const [activeTab, setActiveTab] = useState<number>(0)
+  const router = useRouter()
+  const { isAuthenticated } = useAuth()
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push('/?redirected=true')
+    }
+  }, [isAuthenticated, router])
 
   return (
     <div className='container flex gap-20   items-center justify-center '>
