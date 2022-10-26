@@ -7,7 +7,7 @@ import RegisterForm from '../components/Form/RegisterForm'
 import LoginIllustration from '../components/svgs/LoginIllustration'
 import RegisterIllustration from '../components/svgs/RegisterIllustration'
 import Tabs from '../components/Tabs'
-import { useAuth } from '../context/customHooks/useAuth'
+import { useAuth } from '../context/hooks/useAuth'
 
 const Signin = () => {
   const [activeTab, setActiveTab] = useState<number>(0)
@@ -21,10 +21,27 @@ const Signin = () => {
   }, [isAuthenticated, router])
 
   return (
-    <div className='container flex gap-20   items-center justify-center '>
-      <div className='  w-11/12 mx-auto   items-center justify-center  h-max flex gap-20  '>
+    <div className='container flex gap-20   items-center justify-center  '>
+      <div className='  w-11/12 h-3/5 relative   mx-auto bg-primary_t_2 rounded-3xl py-12 px-4   items-center justify-center bg-red-4900  flex gap-20  '>
+        <div className='flex flex-col items-center justify-center  gap-8 text-primary_t '>
+          {activeTab === 0 && (
+            <LoginIllustration
+              size={400}
+              fillClassName='fill-primary_t_2'
+              secClassName='fill-accent dark:fill-secondary_s_2'
+            />
+          )}
+          {activeTab === 1 && (
+            <RegisterIllustration
+              fillClassName='fill-primary_t '
+              secClassName='fill-primary_t dark:fill-secondary_s_2'
+              size={400}
+            />
+          )}
+        </div>
         <div className='w-1/2 flex flex-col    '>
           <Tabs
+            headerClassName='absolute top-0   left-0'
             items={[
               {
                 tab: 'login',
@@ -37,23 +54,6 @@ const Signin = () => {
             ]}
             setActiveTab={setActiveTab}
           />
-        </div>
-
-        <div className='flex flex-col items-center justify-center gap-8 text-primary_t '>
-          {activeTab === 0 && (
-            <LoginIllustration
-              size={400}
-              fillClassName='fill-primary_t_2'
-              secClassName='fill-accent dark:fill-secondary_s_2'
-            />
-          )}
-          {activeTab === 1 && (
-            <RegisterIllustration
-              fillClassName='fill-primary_t_2 '
-              secClassName='fill-primary_t dark:fill-secondary_s_2'
-              size={400}
-            />
-          )}
         </div>
       </div>
     </div>

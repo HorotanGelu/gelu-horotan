@@ -7,7 +7,7 @@ import * as Yup from 'yup'
 // Components
 import Input from './Input'
 import Button from '../Button'
-import { useAuth } from '../../context/customHooks/useAuth'
+import { useAuth } from '../../context/hooks/useAuth'
 
 type Props = {
   className?: string
@@ -125,7 +125,7 @@ const RegisterForm = ({ className, rounded }: Props) => {
 
           <Button
             type='submit'
-            className='mb-4 w-full self-center py-2 px-4  text-secondary bg-primary_t_2 uppercase'
+            className='mb-4 w-full self-center py-2 px-4  text-primary bg-secondary_s_2 uppercase'
             rounded
           >
             Register

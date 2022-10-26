@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
-import { useAuth } from '../context/customHooks/useAuth'
+import { useAuth } from '../context/hooks/useAuth'
 
 type Props = {
   children: React.ReactNode

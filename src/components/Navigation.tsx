@@ -5,7 +5,7 @@ import Logo from './svgs/Logo'
 
 import Dropdown from './Dropdown'
 import Avatar from './Avatar'
-import { useAuth } from '../context/customHooks/useAuth'
+import { useAuth } from '../context/hooks/useAuth'
 
 const Navigation = () => {
   const { isAuthenticated, user, logout } = useAuth()

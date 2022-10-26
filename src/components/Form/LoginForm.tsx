@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAuth } from '../../context/customHooks/useAuth'
+import { useAuth } from '../../context/hooks/useAuth'
 
 // Components
 import Input from './Input'
@@ -55,7 +55,7 @@ const LoginForm = ({ className, rounded }: Props) => {
 
           <Button
             type='submit'
-            className='mb-4 w-full self-center py-2 px-4  text-secondary bg-primary_t_2 uppercase'
+            className='mb-4 w-full self-center py-2 px-4  text-primary bg-secondary_s_2 uppercase'
             rounded
           >
             LOGIn

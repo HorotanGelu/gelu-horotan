@@ -2,6 +2,7 @@ import React from 'react'
 import { Tab } from '@headlessui/react'
 
 type Items = {
+  headerClassName?: string
   items: {
     tab: string
     component: React.ReactNode
@@ -10,23 +11,28 @@ type Items = {
   setActiveTab: React.Dispatch<React.SetStateAction<number>>
 }
 
-const Tabs = ({ items, setActiveTab }: Items) => {
+const Tabs = ({ items, setActiveTab, headerClassName }: Items) => {
   return (
     <Tab.Group>
       <Tab.List className='flex space-x-1 w-full  '>
-        {items.map((category, index) => (
-          <Tab
-            key={index}
-            className={
-              'ui-selected:bg-accent_t_2  ui-selected:text-primary_s   bg-accent_s_2   text-secondary   focus:outline-none w-full   font-medium leading-5 p-2  uppercase transition-all ease-in-out duration-250'
-            }
-            onClick={() => {
-              setActiveTab(index)
-            }}
-          >
-            {category.tab}
-          </Tab>
-        ))}
+        <div
+          className={`${headerClassName}  gap-1 w-full  flex justify-around `}
+        >
+          {items.map((category, index) => (
+            <Tab
+              key={index}
+              className={
+                'ui-selected:bg-secondary   bg-secondary_s_2   text-primary   focus:outline-none w-full   font-medium leading-5 p-2  uppercase transition-all ease-in-out duration-250'
+              }
+              onClick={() => {
+                setActiveTab(index)
+              }}
+            >
+              {category.tab}
+            </Tab>
+          ))}
+        </div>
+        {/* {children} */}
       </Tab.List>
       <Tab.Panels className={' h-full mt-2 '}>
         {items.map((item, index) => {
