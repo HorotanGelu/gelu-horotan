@@ -9,5 +9,4 @@ function useMount() {
 
    return [isMounted]
 }
-
 export default useMount
