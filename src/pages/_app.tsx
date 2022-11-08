@@ -6,16 +6,16 @@ import Navigation from '../components/Navigation'
 import { RouteShield } from '../components/RouteShield'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <Providers>
-        <Navigation />
-        <RouteShield>
-          <Component {...pageProps} />
-        </RouteShield>
-      </Providers>
-    </>
-  )
+   return (
+      <>
+         <Providers>
+            <Navigation />
+            <RouteShield>
+               <Component {...pageProps} />
+            </RouteShield>
+         </Providers>
+      </>
+   )
 }
 
 export default MyApp
