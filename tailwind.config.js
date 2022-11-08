@@ -9,6 +9,11 @@ module.exports = {
    ],
    darkMode: 'class',
    theme: {
+      clipPath: {
+         rightPoint: 'polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);',
+         chevronRight:
+            'polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);',
+      },
       extend: {
          colors: {
             primary_s_2: '#0a0f13',
@@ -33,5 +38,9 @@ module.exports = {
       },
    },
 
-   plugins: [require('@headlessui/tailwindcss'), { prefix: 'ui' }],
+   plugins: [
+      require('@headlessui/tailwindcss'),
+      require('tailwind-clip-path'),
+      { prefix: 'ui' },
+   ],
 }

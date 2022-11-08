@@ -1,7 +1,7 @@
 import React from 'react'
 
 const carId = () => {
-   return <div>[id]</div>
+   return <div className='bg-primary container'>[id]</div>
 }
 
 export default carId
