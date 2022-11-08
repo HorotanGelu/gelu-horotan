@@ -3,6 +3,12 @@
 
 echo '🏗️👷 Styling, testing and building your project before committing'
 
+npm run prettier ||
+(
+    echo 'Everything alright!';
+    false;
+)
+
 # Check Prettier standards
 npm run check-format ||
 (
