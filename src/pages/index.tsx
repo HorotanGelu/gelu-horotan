@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React, { useRef } from 'react'
 
 import Button from '../components/Button'
@@ -33,7 +34,7 @@ export default function Home() {
                </Button>
             </div>
 
-            <Logo size={256}></Logo>
+            {/* <Image src={'/test.jpg'} width={64} height={64}></Image> */}
          </div>
          <div
             ref={myRef}
