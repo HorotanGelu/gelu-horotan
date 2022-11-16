@@ -28,6 +28,7 @@ type State = {
    error?: Error
    setError: React.Dispatch<React.SetStateAction<Error | undefined>>
    login: (credentials: LoginCredentials) => Promise<Error | undefined>
+   updateProfile: (credentials: UpdateCredentials) => Promise<Error | undefined>
    register: (credentials: RegisterCredentials) => Promise<Error | undefined>
    fetchUser: () => Promise<Error | undefined>
    logout: () => Promise<void>
@@ -35,9 +36,16 @@ type State = {
    setCallbacks: React.Dispatch<React.SetStateAction<Callbacks | undefined>>
 }
 
-export type LoginCredentials = {
+type LoginCredentials = {
    email: string
    password: string
+}
+type UpdateCredentials = {
+   email?: string
+   password?: string
+   firstName?: string
+   lastName?: string
+   oldPassword?: string
 }
 type RegisterCredentials = {
    firstName: string
@@ -101,6 +109,33 @@ export const AuthProvider = ({ children }: Props) => {
          await logout()
       })
    }, [])
+
+   const updateProfile = async (body: UpdateCredentials) => {
+      setIsLoading(true)
+
+      try {
+         const res = await axios.put(
+            'http://localhost:5000/api/profile/update',
+            body,
+            {
+               headers: {
+                  'Content-Type': 'application/json',
+                  'x-auth-token': `${localStorage.getItem('token')}`,
+               },
+            }
+         )
+
+         setError(undefined)
+         setIsLoading(false)
+         await fetchUser()
+         return res.data
+      } catch (error) {
+         await logout()
+         console.error(error)
+         setIsLoading(false)
+         return error
+      }
+   }
 
    const register = async ({
       firstName,
@@ -189,7 +224,7 @@ export const AuthProvider = ({ children }: Props) => {
 
    return (
       <AuthContext.Provider
-         // displayName={'Auth Context'}
+         // displayName='Auth Context'
          value={{
             isLoading,
             isAuthenticated,
@@ -199,6 +234,7 @@ export const AuthProvider = ({ children }: Props) => {
             login,
             logout,
             register,
+            updateProfile,
             fetchUser,
             setCallbacks,
          }}

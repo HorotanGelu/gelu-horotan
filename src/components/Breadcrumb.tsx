@@ -9,7 +9,7 @@ const Breadcrumb = () => {
 
    if (breadcrumbs && breadcrumbs.length !== 0)
       return (
-         <nav className=' my-20 px-14 absolute w-full'>
+         <nav className=' mt-8 px-14  w-full'>
             <ol className='flex divide-x-4  justify-start items-center   w-1/2 bg-secondary_t_2  rounded-xl '>
                <BreadcrumbItem className='   rounded-l-lg  py-2 px-4 ' href='/'>
                   <FaHome className='text-primary ' />

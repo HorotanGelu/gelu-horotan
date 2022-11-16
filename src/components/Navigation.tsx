@@ -23,7 +23,7 @@ const Navigation = () => {
       items: [
          {
             name: 'Profile',
-            to: '/about',
+            to: '/dashboard',
             id: 1,
          },
          {
@@ -52,7 +52,7 @@ const Navigation = () => {
       <>
          <nav
             className={
-               ' flex flex-row fixed w-full py-3 px-14   justify-between bg-primary dark:bg-secondary   items-center'
+               ' flex flex-row  w-full py-3 px-14   justify-between bg-primary dark:bg-secondary   items-center'
             }
          >
             <ul className='flex flex-row w-1/2 justify-between items-center  '>
@@ -81,12 +81,7 @@ const Navigation = () => {
                         {user.firstName}&nbsp;
                         {user.lastName}
                      </span>
-                     <Avatar
-                        letters={
-                           user.firstName.slice(0, 1) +
-                           user.lastName.slice(0, 1)
-                        }
-                     />
+                     <Avatar size='small' />
                   </Dropdown>
                )}
                <DarkMode />

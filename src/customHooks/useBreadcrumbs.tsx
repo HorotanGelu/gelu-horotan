@@ -9,7 +9,7 @@ type Breadcrumb = {
 function useBreadcrumbs() {
    const router = useRouter()
    const [breadcrumbs, setBreadcrumbs] = useState<Breadcrumb>()
-   console.log(breadcrumbs, 'STATE')
+
    useEffect(() => {
       const pathWithoutQuery = router.asPath.split('?')[0]
       let pathArray = pathWithoutQuery.split('/')

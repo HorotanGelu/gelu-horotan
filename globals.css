@@ -20,6 +20,10 @@
       @apply bg-primary dark:bg-secondary text-secondary_s_2 dark:text-primary_s_2 min-w-full w-full h-screen;
    }
 
+   body {
+      @apply bg-primary dark:bg-secondary;
+   }
+
    h2,
    h3,
    h4,

@@ -8,6 +8,8 @@ type Props = {
    error: string
    id: string
    label: string
+   textColor?: string
+   placeholder?: string
    onChangeHandler: () => void
    onBlurHandler: () => void
 }
@@ -21,14 +23,18 @@ const Input = ({
    error,
    id,
    label,
+   placeholder,
+   textColor,
 }: Props) => {
    const controls = useAnimation()
    return (
       <div className='flex flex-col relative '>
-         <label htmlFor={name} className=' '>
+         <label htmlFor={name} className=' text-secondary'>
             {label}
          </label>
+         <span className='text-red-500   w-full'>{error}</span>
          <input
+            placeholder={placeholder ? placeholder : ''}
             onFocus={() => {
                controls.set({
                   d: 'M2 2C2 2 15.5 10 52 10C88.5 9.99999 102 2 102 2',
@@ -40,7 +46,13 @@ const Input = ({
             name={name}
             type={type}
             id={id}
-            className={`peer  bg-transparent transition-all duration-200 ease-in-out   p-2 outline-none`}
+            className={`peer  bg-transparent transition-all duration-200 ease-in-out ${
+               textColor === 'white'
+                  ? 'text-secondary'
+                  : textColor === 'dark'
+                  ? 'text-primary'
+                  : ''
+            }  p-2 outline-none`}
             value={value}
             onChange={onChangeHandler}
             onBlur={onBlurHandler}
@@ -69,10 +81,6 @@ const Input = ({
                strokeWidth='2'
             />
          </motion.svg>
-
-         <span className='text-red-500 -bottom-6 absolute  w-full'>
-            {error}
-         </span>
       </div>
    )
 }

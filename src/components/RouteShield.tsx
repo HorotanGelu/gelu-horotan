@@ -6,7 +6,7 @@ type Props = {
    children: React.ReactNode
 }
 
-const protectedRoutes = ['/verified']
+const protectedRoutes = ['/verified', '/dashboard']
 
 const routeIsProtected = (url: string) => {
    return Boolean(protectedRoutes.find(route => url.includes(route)))
