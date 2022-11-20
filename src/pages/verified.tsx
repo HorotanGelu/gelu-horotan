@@ -1,6 +1,6 @@
 import React from 'react'
 import MailVerificationSvg from '../components/svgs/MailVerificationSvg'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticProps } from 'next'
 
 const Verified = () => {
    return (

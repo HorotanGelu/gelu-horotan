@@ -69,7 +69,7 @@ const RegisterForm = ({ className, rounded }: Props) => {
             handleBlur,
             handleChange,
          }) => (
-            <Form className={'flex flex-col gap-8 py-4'}>
+            <Form className={'flex flex-col gap-8 py-4 text-primary'}>
                <div className='grid grid-cols-2 space-x-1'>
                   <Field
                      label='First name'
@@ -106,29 +106,30 @@ const RegisterForm = ({ className, rounded }: Props) => {
                   as={Input}
                />
 
-               <Field
-                  label='Password'
-                  id='password'
-                  name='password'
-                  onChangeHandler={handleChange}
-                  onBlurHandler={handleBlur}
-                  type='input'
-                  value={password}
-                  error={errors.password}
-                  as={Input}
-               />
-               <Field
-                  label='Check password'
-                  id='password2'
-                  name='password2'
-                  onChangeHandler={handleChange}
-                  onBlurHandler={handleBlur}
-                  type='input'
-                  value={password2}
-                  error={errors.password2}
-                  as={Input}
-               />
-
+               <div className='grid grid-cols-2 space-x-1'>
+                  <Field
+                     label='Password'
+                     id='password'
+                     name='password'
+                     onChangeHandler={handleChange}
+                     onBlurHandler={handleBlur}
+                     type='input'
+                     value={password}
+                     error={errors.password}
+                     as={Input}
+                  />
+                  <Field
+                     label='Check password'
+                     id='password2'
+                     name='password2'
+                     onChangeHandler={handleChange}
+                     onBlurHandler={handleBlur}
+                     type='input'
+                     value={password2}
+                     error={errors.password2}
+                     as={Input}
+                  />
+               </div>
                <Button
                   type='submit'
                   className='mb-4 w-full self-center py-2 px-4  text-primary bg-secondary_s_2 uppercase'

@@ -1,4 +1,6 @@
 import React from 'react'
+import AlertWrapper from '../AlertWrapper'
+
 import Breadcrumb from '../Breadcrumb'
 import Navigation from '../Navigation'
 
@@ -11,7 +13,9 @@ const BaseLayout = ({ children }: Props) => {
       <>
          <Navigation />
          <Breadcrumb />
+
          <main>{children}</main>
+         <AlertWrapper />
       </>
    )
 }

@@ -50,7 +50,7 @@ const UpdatePasswordForm = () => {
 
                   filterById,
                }
-               console.log(body)
+
                await updateProfile(body)
                resetForm()
             }

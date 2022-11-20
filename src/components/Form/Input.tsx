@@ -1,5 +1,6 @@
 import React from 'react'
-import { motion, useAnimation } from 'framer-motion'
+
+import getInputIcon from '../../utils/getInputIcon'
 
 type Props = {
    value: string
@@ -7,8 +8,9 @@ type Props = {
    name: string
    error: string
    id: string
+
    label: string
-   textColor?: string
+
    placeholder?: string
    onChangeHandler: () => void
    onBlurHandler: () => void
@@ -24,63 +26,30 @@ const Input = ({
    id,
    label,
    placeholder,
-   textColor,
 }: Props) => {
-   const controls = useAnimation()
    return (
-      <div className='flex flex-col relative '>
+      <div className='flex flex-col relative gap-4  '>
          <label htmlFor={name} className=' text-secondary'>
             {label}
          </label>
-         <span className='text-red-500   w-full'>{error}</span>
-         <input
-            placeholder={placeholder ? placeholder : ''}
-            onFocus={() => {
-               controls.set({
-                  d: 'M2 2C2 2 15.5 10 52 10C88.5 9.99999 102 2 102 2',
-               })
-               controls.start({
-                  d: 'M0 2.00001C0 2.00001 13.5 2.00001 50 2.00001C86.5 2 100 2.00001 100 2.00001',
-               })
-            }}
-            name={name}
-            type={type}
-            id={id}
-            className={`peer  bg-transparent transition-all duration-200 ease-in-out ${
-               textColor === 'white'
-                  ? 'text-secondary'
-                  : textColor === 'dark'
-                  ? 'text-primary'
-                  : ''
-            }  p-2 outline-none`}
-            value={value}
-            onChange={onChangeHandler}
-            onBlur={onBlurHandler}
-         />
-         <motion.svg
-            preserveAspectRatio='none'
-            height='4'
-            viewBox='0 0 100 4'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-            className='overflow-visible opacity-80 absolute left-0 bottom-0 w-full'
-         >
-            <motion.path
-               animate={controls}
-               d='M0 2.00001C0 2.00001 13.5 2.00001 50 2.00001C86.5 2 100 2.00001 100 2.00001'
-               transition={{
-                  duration: 1,
-                  type: 'spring',
-                  stiffness: 70,
-                  damping: 8,
-                  mass: 0.5,
-               }}
-               stroke={`${
-                  value && !error ? 'green' : error ? 'red' : 'yellow'
-               }`}
-               strokeWidth='2'
+         {/* <span className='text-red-500 absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4   w-full'>
+            {error}
+         </span> */}
+         <div className=' relative w-full '>
+            <input
+               placeholder={placeholder ? placeholder : ''}
+               name={name}
+               type={type}
+               id={id}
+               className={`peer relative transition-all bg-secondary_s rounded-lg duration-200 w-full ease-in-out  py-2 px-8 outline-none`}
+               value={value}
+               onChange={onChangeHandler}
+               onBlur={onBlurHandler}
             />
-         </motion.svg>
+            <div className=' absolute top-2/4 left-2 -translate-y-2/4 '>
+               {getInputIcon(id, error)}
+            </div>
+         </div>
       </div>
    )
 }

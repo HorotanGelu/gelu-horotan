@@ -1,7 +1,9 @@
 import React, { createContext, useEffect, useState } from 'react'
+import { AxiosError } from 'axios'
 
 // API
 import axios from 'axios'
+import { useAlert } from '../hooks/useAlert'
 
 type Props = {
    children: React.ReactNode
@@ -25,7 +27,17 @@ type State = {
    isLoading: boolean
    isAuthenticated: boolean | undefined
    user?: User
-   error?: Error
+   error?:
+      | Error
+      | {
+           0: {
+              messages: {
+                 0: {
+                    message: string
+                 }
+              }
+           }
+        }
    setError: React.Dispatch<React.SetStateAction<Error | undefined>>
    login: (credentials: LoginCredentials) => Promise<Error | undefined>
    updateProfile: (credentials: UpdateCredentials) => Promise<Error | undefined>
@@ -57,6 +69,8 @@ type RegisterCredentials = {
 export const AuthContext = createContext<State>({} as State)
 
 export const AuthProvider = ({ children }: Props) => {
+   const { createAlert } = useAlert()
+
    const [user, setUser] = useState()
    const [error, setError] = useState<Error>()
    const [isLoading, setIsLoading] = useState(true)
@@ -88,6 +102,7 @@ export const AuthProvider = ({ children }: Props) => {
                })
                localStorage.setItem('user', JSON.stringify(res.data))
                setIsLoading(false)
+
                return res.data
             } catch (error) {
                console.error(error)
@@ -127,12 +142,14 @@ export const AuthProvider = ({ children }: Props) => {
 
          setError(undefined)
          setIsLoading(false)
+
          await fetchUser()
          return res.data
       } catch (error) {
          await logout()
-         console.error(error)
+
          setIsLoading(false)
+
          return error
       }
    }
@@ -160,10 +177,19 @@ export const AuthProvider = ({ children }: Props) => {
          setError(undefined)
          setIsAuthenticated(false)
          setIsLoading(false)
-      } catch (err) {
-         setError(error)
-         setIsLoading(false)
-         return error
+         createAlert(
+            'Your account was created successfully. You can now log in!',
+            true
+         )
+      } catch (error) {
+         if (error instanceof AxiosError) {
+            setIsLoading(false)
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            error.response.data.errors.forEach((err: any) => {
+               createAlert(err.msg, false)
+            })
+            return error
+         }
       }
    }
 
@@ -180,12 +206,20 @@ export const AuthProvider = ({ children }: Props) => {
          setError(undefined)
 
          setIsLoading(false)
+         createAlert(`You're now logged in.`, true)
+
          return res.data
-      } catch (error) {
-         await logout()
-         console.error(error)
-         setIsLoading(false)
-         return error
+      } catch (err) {
+         if (err instanceof AxiosError) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            err.response.data.errors.forEach((err2: any) => {
+               createAlert(err2.msg, false)
+            })
+
+            setIsLoading(false)
+
+            return error
+         }
       }
    }
    const logout = async () => {
@@ -194,6 +228,7 @@ export const AuthProvider = ({ children }: Props) => {
       localStorage.removeItem('token')
       localStorage.removeItem('user')
 
+      createAlert(`You're now logged out. `, true)
       setUser(undefined)
       setIsAuthenticated(false)
       setIsLoading(false)
@@ -209,6 +244,7 @@ export const AuthProvider = ({ children }: Props) => {
                'x-auth-token': `${localStorage.getItem('token')}`,
             },
          })
+
          localStorage.setItem('user', JSON.stringify(res.data))
          setIsAuthenticated(true)
          setUser(res.data)
@@ -216,7 +252,6 @@ export const AuthProvider = ({ children }: Props) => {
          setIsLoading(false)
          return res.data
       } catch (error) {
-         console.error(error)
          setIsLoading(false)
          return error
       }

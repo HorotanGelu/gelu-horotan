@@ -24,13 +24,19 @@
       @apply bg-primary dark:bg-secondary;
    }
 
+   p {
+      @apply font-light;
+   }
+
+   h5,
+   h6 {
+      @apply font-medium;
+   }
+
    h2,
    h3,
-   h4,
-   h5,
-   h6,
-   p {
-      @apply font-medium;
+   h4 {
+      @apply font-normal;
    }
 
    h1 {

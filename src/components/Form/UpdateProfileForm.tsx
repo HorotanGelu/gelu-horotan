@@ -64,7 +64,7 @@ const UpdateProfileForm = () => {
             handleBlur,
             handleChange,
          }) => (
-            <Form className={'flex flex-col w-full gap-8 py-4'}>
+            <Form className={'flex flex-col w-full gap-8 py-4 text-primary'}>
                <div className='grid grid-cols-2 space-x-1'>
                   <Field
                      label='First name'
@@ -75,7 +75,6 @@ const UpdateProfileForm = () => {
                      type='input'
                      value={firstName}
                      error={errors.firstName}
-                     textColor='white'
                      as={Input}
                      placeholder={user?.firstName}
                   />
@@ -103,7 +102,7 @@ const UpdateProfileForm = () => {
                   value={email}
                   error={errors.email}
                   as={Input}
-                  textColor='white'
+                  textColor='dark'
                   placeholder={user?.email}
                />
 

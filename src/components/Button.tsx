@@ -1,4 +1,6 @@
 import React from 'react'
+import { motion } from 'framer-motion'
+
 type Props = {
    children: React.ReactNode
    className?: string
@@ -10,7 +12,10 @@ type Props = {
 
 const Button = ({ children, className, rounded, handler, type }: Props) => {
    return (
-      <button
+      <motion.button
+         whileHover={{ scale: 1.1 }}
+         whileTap={{ scale: 0.8 }}
+         transition={{ duration: 0.2, ease: 'easeInOut' }}
          type={type}
          className={`${className} ${
             rounded && 'rounded-full'
@@ -18,7 +23,7 @@ const Button = ({ children, className, rounded, handler, type }: Props) => {
          onClick={handler}
       >
          {children}
-      </button>
+      </motion.button>
    )
 }
 

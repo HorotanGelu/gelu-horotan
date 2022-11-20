@@ -7,9 +7,13 @@ import { IoIosArrowForward } from 'react-icons/io'
 const Breadcrumb = () => {
    const [breadcrumbs] = useBreadcrumbs()
 
-   if (breadcrumbs && breadcrumbs.length !== 0)
+   if (
+      breadcrumbs &&
+      breadcrumbs.length !== 0 &&
+      !breadcrumbs[0].href.includes('dashboard')
+   )
       return (
-         <nav className=' mt-8 px-14  w-full'>
+         <nav className=' absolute my-8 px-14   w-full'>
             <ol className='flex divide-x-4  justify-start items-center   w-1/2 bg-secondary_t_2  rounded-xl '>
                <BreadcrumbItem className='   rounded-l-lg  py-2 px-4 ' href='/'>
                   <FaHome className='text-primary ' />
