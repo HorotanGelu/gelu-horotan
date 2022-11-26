@@ -1,10 +1,12 @@
 import Image from 'next/image'
-import React, { useRef } from 'react'
+import React, { useState, useRef } from 'react'
 
 import Button from '../components/Button'
+import ModalWrapper from '../components/ModalWrapper'
 import Logo from '../components/svgs/Logo'
 
 export default function Home() {
+   const [isOpen, setIsOpen] = useState(true)
    const myRef = useRef<HTMLDivElement>(null)
    const executeScroll = () => {
       if (null !== myRef.current) {
@@ -28,7 +30,7 @@ export default function Home() {
                   rounded
                   className=' bg-accent text-secondary  p-2'
                   type='button'
-                  handler={executeScroll}
+                  onClick={executeScroll}
                >
                   SEE MY PROJECTS
                </Button>
@@ -38,11 +40,16 @@ export default function Home() {
          </div>
          <div
             ref={myRef}
-            className='h-screen bg-red-400 w-full scroll-smooth flex items-center justify-center gap-4'
+            className='h-screen bg-red-700 w-full scroll-smooth flex items-center justify-center gap-20'
          >
-            <div className='w-60 h-96 bg-primary'></div>
-            <div className='w-60  h-96  bg-primary'></div>
-            <div className='w-60  h-96 bg-primary'></div>
+            <Button type='button' onClick={() => setIsOpen(true)}>
+               ADD PROJECT
+               <ModalWrapper isOpen={isOpen} setIsOpen={setIsOpen}>
+                  <div className='h-full bg-blue-200 flex items-center justify-center w-full'>
+                     TEST
+                  </div>
+               </ModalWrapper>
+            </Button>
          </div>
          <div className='h-screen bg-yellow-400 w-full'>RECOMM</div>
          <div className='h-screen bg-blue-400 w-full'>MEETINGS</div>

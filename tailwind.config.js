@@ -45,5 +45,9 @@ module.exports = {
       require('@headlessui/tailwindcss'),
       require('tailwind-clip-path'),
       { prefix: 'ui' },
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      require('tailwindcss-writing-mode')({
+         variants: ['responsive', 'hover'],
+      }),
    ],
 }
