@@ -2,6 +2,7 @@ import React from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { AuthProvider } from './providers/AuthProvider'
 import { AlertProvider } from './providers/AlertProvider'
+import { ProjectProvider } from './providers/ProjectProvider'
 
 const queryClient = new QueryClient()
 
@@ -13,7 +14,9 @@ export const Providers = ({ children }: Props) => {
    return (
       <QueryClientProvider client={queryClient}>
          <AlertProvider>
-            <AuthProvider>{children}</AuthProvider>
+            <ProjectProvider>
+               <AuthProvider>{children}</AuthProvider>
+            </ProjectProvider>
          </AlertProvider>
       </QueryClientProvider>
    )

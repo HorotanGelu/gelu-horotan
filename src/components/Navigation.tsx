@@ -55,19 +55,21 @@ const Navigation = () => {
                ' flex flex-row  w-full py-3 px-14   justify-between bg-primary dark:bg-secondary   items-center'
             }
          >
-            <ul className='flex flex-row w-1/2 justify-between items-center  '>
+            <ul className='flex flex-row w-1/2 justify-start gap-16 items-center  '>
                <Logo size={36} />
-               {navItems?.map(item => {
-                  return (
-                     <li key={item.id} className='navigation-item '>
-                        <Link
-                           href={`/${item.name === 'home' ? '' : item.name}`}
-                        >
-                           {item.name}
-                        </Link>
-                     </li>
-                  )
-               })}
+               <div className='flex items-center justify-center gap-8'>
+                  {navItems?.map(item => {
+                     return (
+                        <li key={item.id} className='navigation-item '>
+                           <Link
+                              href={`/${item.name === 'home' ? '' : item.name}`}
+                           >
+                              {item.name}
+                           </Link>
+                        </li>
+                     )
+                  })}
+               </div>
             </ul>
             <ul className='flex gap-12  items-center justify-between'>
                {!isAuthenticated ? (

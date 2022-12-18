@@ -45,6 +45,7 @@
       "react-dom": "18.2.0",
       "react-icons": "^4.4.0",
       "react-query": "^3.39.2",
+      "react-select": "^5.7.0",
       "short-uuid": "^4.2.2",
       "uuidv4": "^6.2.13",
       "yup": "^0.32.11"

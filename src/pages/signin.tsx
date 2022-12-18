@@ -21,6 +21,8 @@ function Signin() {
       }
    }, [isAuthenticated, router])
 
+   const tabList = ['login', 'register']
+
    return (
       <div className='container flex gap-20   items-center justify-center  '>
          <div className='  w-11/12 h-3/5 relative   mx-auto bg-primary_t_2 rounded-3xl py-12 px-4   items-center justify-center bg-red-4900  flex gap-20  '>
@@ -43,18 +45,12 @@ function Signin() {
             <div className='w-1/2 flex flex-col h-full   items-center justify-between   '>
                <Tabs
                   headerClassName='absolute top-0   left-0'
-                  items={[
-                     {
-                        tab: 'login',
-                        component: <LoginForm className='rounded-b-3xl' />,
-                     },
-                     {
-                        tab: 'register',
-                        component: <RegisterForm className='rounded-b-3xl' />,
-                     },
-                  ]}
+                  list={tabList}
                   setActiveTab={setActiveTab}
-               />
+               >
+                  <LoginForm className='rounded-b-3xl' />
+                  <RegisterForm className='rounded-b-3xl' />
+               </Tabs>
             </div>
          </div>
       </div>

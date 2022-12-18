@@ -1,39 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Tab } from '@headlessui/react'
 
 type Items = {
    headerClassName?: string
-   items: {
-      tab: string
-      component: React.ReactNode
-   }[]
+   list: string[]
+   className?: string
+   children: React.ReactElement[]
 
-   setActiveTab: React.Dispatch<React.SetStateAction<number>>
+   setSelectedIndex?: React.Dispatch<React.SetStateAction<number>>
+   setActiveTab?: React.Dispatch<React.SetStateAction<number>>
+   [key: string]: unknown
 }
-
-const Tabs = ({ items, setActiveTab }: Items) => {
+const Tabs = ({ list, setActiveTab, className, children, ...props }: Items) => {
    return (
-      <Tab.Group>
+      <Tab.Group {...props} as={'div'}>
          <Tab.List className='flex   w-full  '>
-            {items.map((category, index) => (
+            {list.map((item, index) => (
                <Tab
                   key={index}
-                  className={
-                     'ui-selected:border-b-accent ui-selected:border-b-2 w-full outline-none     text-secondary   focus:outline-none   font-medium leading-5 p-2  uppercase transition-all ease-in-out duration-250 rounded-t-lg'
-                  }
+                  className={`ui-selected:border-b-accent ui-selected:border-b-2 w-full outline-none ${
+                     className ? className : ''
+                  }     text-secondary   focus:outline-none   font-medium leading-5 p-2  uppercase transition-all ease-in-out duration-250 rounded-t-lg`}
                   onClick={() => {
-                     setActiveTab(index)
+                     setActiveTab ? setActiveTab(index) : ''
                   }}
                >
-                  {category.tab}
+                  {item}
                </Tab>
             ))}
          </Tab.List>
          <Tab.Panels className={' h-full mt-2 '}>
-            {items.map((item, index) => {
+            {children.map((item, index) => {
                return (
                   <Tab.Panel key={index} className='h-full  flex items-center'>
-                     {item.component}
+                     {item}
                   </Tab.Panel>
                )
             })}

@@ -1,12 +1,12 @@
-import Image from 'next/image'
 import React, { useState, useRef } from 'react'
 
 import Button from '../components/Button'
+import ProjectForm from '../components/form/ProjectForm'
 import ModalWrapper from '../components/ModalWrapper'
-import Logo from '../components/svgs/Logo'
+import HeroIllustration from '../components/svgs/HeroIllustration'
 
 export default function Home() {
-   const [isOpen, setIsOpen] = useState(true)
+   const [isOpen, setIsOpen] = useState(false)
    const myRef = useRef<HTMLDivElement>(null)
    const executeScroll = () => {
       if (null !== myRef.current) {
@@ -17,13 +17,11 @@ export default function Home() {
    return (
       <>
          <div
-            className={
-               'flex  justify-start items-center w-full h-screen theme-color '
-            }
+            className={'flex  justify-evenly  items-center w-full h-screen  '}
          >
-            <div className='flex flex-col w-1/2 p-20'>
+            <div className='flex flex-col  h-screen justify-center w-1/2 '>
                <h1 className='text-secondary dark:text-primary   p-2'>
-                  Gelu Horotan
+                  Gelu Horotan <br />
                   <span className='text-accent_s'> Software Developer</span>
                </h1>
                <Button
@@ -36,6 +34,7 @@ export default function Home() {
                </Button>
             </div>
 
+            <HeroIllustration />
             {/* <Image src={'/test.jpg'} width={64} height={64}></Image> */}
          </div>
          <div
@@ -45,14 +44,14 @@ export default function Home() {
             <Button type='button' onClick={() => setIsOpen(true)}>
                ADD PROJECT
                <ModalWrapper isOpen={isOpen} setIsOpen={setIsOpen}>
-                  <div className='h-full bg-blue-200 flex items-center justify-center w-full'>
+                  {/* <div className='h-full bg-blue-200 flex items-center justify-center w-full'>
                      TEST
-                  </div>
+                  </div> */}
+                  <ProjectForm />
                </ModalWrapper>
             </Button>
          </div>
-         <div className='h-screen bg-yellow-400 w-full'>RECOMM</div>
-         <div className='h-screen bg-blue-400 w-full'>MEETINGS</div>
+         <div></div>
       </>
    )
 }
