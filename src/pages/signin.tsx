@@ -25,11 +25,7 @@ function Signin() {
   return (
     <div className='container flex gap-20   items-center justify-center  '>
       <div className='w-full flex  h-full    items-center justify-center   '>
-        <Tabs
-          headerClassName='absolute top-0   left-0'
-          list={tabList}
-          setActiveTab={setActiveTab}
-        >
+        <Tabs list={tabList} setActiveTab={setActiveTab}>
           <LoginForm className='rounded-b-3xl' />
           <RegisterForm className='rounded-b-3xl' />
         </Tabs>

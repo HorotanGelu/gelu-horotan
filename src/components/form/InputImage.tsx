@@ -39,7 +39,7 @@ const InputImage = ({
 
   error,
 }: Props) => {
-  const [dataUrl, setDataUrl] = useState('')
+  const [dataUrl, setDataUrl] = useState<string | null>('')
   const [crop, setCrop] = useState<Crop>({
     x: 0,
     y: 0,
@@ -48,7 +48,7 @@ const InputImage = ({
   })
 
   const [zoom, setZoom] = useState(1)
-  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null)
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState<Crop | null>(null)
 
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
@@ -59,13 +59,13 @@ const InputImage = ({
 
     const reader = new FileReader()
     reader.onload = event => {
-      setDataUrl(event.target.result as string)
+      setDataUrl(event.target?.result as string)
     }
     reader.readAsDataURL(file)
   }
 
   const onCropComplete = useCallback(
-    (croppedArea: unknown, croppedAreaPixels: unknown) => {
+    (croppedArea: unknown, croppedAreaPixels: Crop) => {
       setCroppedAreaPixels(croppedAreaPixels)
     },
     []

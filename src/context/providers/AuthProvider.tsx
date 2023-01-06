@@ -157,7 +157,6 @@ export const AuthProvider = ({ children }: Props) => {
     firstName,
     lastName,
     email,
-
     password,
     profilePicture,
   }: RegisterCredentials) => {
@@ -192,7 +191,7 @@ export const AuthProvider = ({ children }: Props) => {
       if (error instanceof AxiosError) {
         setIsLoading(false)
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        error.response.data.errors.forEach((err: any) => {
+        error?.response?.data.errors.forEach((err: any) => {
           createAlert(err.msg, false)
         })
         return error
@@ -219,7 +218,7 @@ export const AuthProvider = ({ children }: Props) => {
     } catch (err) {
       if (err instanceof AxiosError) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        err.response.data.errors.forEach((err2: any) => {
+        err?.response?.data.errors.forEach((err2: any) => {
           createAlert(err2.msg, false)
         })
 

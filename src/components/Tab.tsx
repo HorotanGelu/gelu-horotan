@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Tab } from '@headlessui/react'
 
 type Items = {
-  headerClassName?: string
   list: string[]
   className?: string
   children: React.ReactElement[]

@@ -1,13 +1,5 @@
 // TYPES
 
-interface PixelCrop {
-  x: number
-  y: number
-
-  width: number
-  height: number
-}
-
 export const createImage = (url: string) =>
   new Promise((resolve, reject) => {
     const image = new Image()
@@ -40,8 +32,8 @@ export function rotateSize(width: number, height: number, rotation: number) {
  */
 
 export default async function getCroppedImg(
-  imageSrc: string,
-  pixelCrop: PixelCrop,
+  imageSrc: string | null,
+  pixelCrop,
   rotation = 0,
   flip: { horizontal: boolean; vertical: boolean } = {
     horizontal: false,
@@ -56,6 +48,8 @@ export default async function getCroppedImg(
   const ctx = canvas.getContext('2d')
 
   if (!ctx) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore: Unreachable code error
     return null
   }
 

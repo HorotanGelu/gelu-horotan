@@ -48,8 +48,10 @@ const SignupSchema = Yup.object().shape({
     .test(
       'imageFormat',
       `Invalid image format. Please select a supported format!`,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore: Unreachable code error
       value => {
-        if (typeof value !== 'object') {
+        if (typeof value === 'string') {
           const mimeType = value.split(',')[0].split(':')[1].split(';')[0]
           return ['image/jpeg', 'image/png', 'image/jpg'].includes(mimeType)
         } else if (typeof value === 'object') {
@@ -57,12 +59,13 @@ const SignupSchema = Yup.object().shape({
         }
       }
     )
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore: Unreachable code error
     .test('imageSize', 'Image is too large', value => {
       if (typeof value === 'string') {
         const imageData = Buffer.from(value, 'base64')
 
         const size = imageData.length / 1000
-        console.log(size, 'KB')
 
         return size <= 2 * 1024 // 2 MB
       } else if (typeof value === 'object') {
@@ -217,7 +220,6 @@ const RegisterForm = ({ className, rounded }: Props) => {
             error={errors.email}
             as={Input}
           />
-
           <div className='grid grid-cols-2 space-x-1'>
             <Field
               label='Password'
@@ -242,7 +244,6 @@ const RegisterForm = ({ className, rounded }: Props) => {
               as={Input}
             />
           </div>
-
           <Button
             type='submit'
             className='mb-4 w-full self-center py-2 px-4  text-primary bg-secondary_s_2 uppercase'
