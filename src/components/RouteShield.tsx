@@ -3,56 +3,56 @@ import React, { useEffect } from 'react'
 import { useAuth } from '../context/hooks/useAuth'
 
 type Props = {
-   children: React.ReactNode
+  children: React.ReactNode
 }
 
 const protectedRoutes = ['/verified', '/dashboard']
 
 const routeIsProtected = (url: string) => {
-   return Boolean(protectedRoutes.find(route => url.includes(route)))
+  return Boolean(protectedRoutes.find(route => url.includes(route)))
 }
 
 export const RouteShield = ({ children }: Props) => {
-   const router = useRouter()
-   const { isAuthenticated } = useAuth()
+  const router = useRouter()
+  const { isAuthenticated } = useAuth()
 
-   const authIsDefined = typeof isAuthenticated !== 'undefined'
-   const isAuthorized = routeIsProtected(router.asPath) ? isAuthenticated : true
+  const authIsDefined = typeof isAuthenticated !== 'undefined'
+  const isAuthorized = routeIsProtected(router.asPath) ? isAuthenticated : true
 
-   const redirect = () => {
-      router.replace('/?redirected=true')
-   }
+  const redirect = () => {
+    router.replace('/?redirected=true')
+  }
 
-   useEffect(() => {
-      if (!authIsDefined) return
+  useEffect(() => {
+    if (!authIsDefined) return
 
-      if (authIsDefined && !isAuthorized) {
-         redirect()
+    if (authIsDefined && !isAuthorized) {
+      redirect()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthorized, router.asPath, isAuthenticated])
+
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      const shouldIntercept =
+        routeIsProtected(url) && authIsDefined && !isAuthenticated
+
+      if (shouldIntercept) {
+        router.events.emit('routeChangeError')
+        redirect()
+        throw 'Not authorized'
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [isAuthorized, router.asPath, isAuthenticated])
+    }
 
-   useEffect(() => {
-      const handleRouteChange = (url: string) => {
-         const shouldIntercept =
-            routeIsProtected(url) && authIsDefined && !isAuthenticated
+    router.events.on('routeChangeStart', handleRouteChange)
 
-         if (shouldIntercept) {
-            router.events.emit('routeChangeError')
-            redirect()
-            throw 'Not authorized'
-         }
-      }
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.events, isAuthenticated])
 
-      router.events.on('routeChangeStart', handleRouteChange)
+  if (!isAuthorized || !authIsDefined) return null
 
-      return () => {
-         router.events.off('routeChangeStart', handleRouteChange)
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [router.events, isAuthenticated])
-
-   if (!isAuthorized || !authIsDefined) return null
-
-   return <>{children}</>
+  return <>{children}</>
 }

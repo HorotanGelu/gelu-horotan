@@ -1,28 +1,27 @@
 import React from 'react'
-import { AiFillMail, AiFillLock } from 'react-icons/ai'
-import { ImMan } from 'react-icons/im'
+import { AiOutlineMail, AiOutlineLock, AiOutlineUser } from 'react-icons/ai'
 
 const getInputIcon = (id: string, error: string) => {
-   const props = {
-      className: `${error ? 'text-error' : 'text-success'}`,
-   }
-   switch (id) {
-      case 'email':
-         return <AiFillMail {...props}></AiFillMail>
-      case 'firstName':
-         return <ImMan {...props}></ImMan>
-      case 'lastName':
-         return <ImMan {...props}></ImMan>
-      case 'password':
-         return <AiFillLock {...props}></AiFillLock>
-      case 'password2':
-         return <AiFillLock {...props}></AiFillLock>
-      case 'oldPassword':
-         return <AiFillLock {...props}></AiFillLock>
+  const props = {
+    className: `${error ? 'text-error' : 'text-success'}`,
+  }
+  switch (id) {
+    case 'email':
+      return <AiOutlineMail {...props}></AiOutlineMail>
+    case 'firstName':
+      return <AiOutlineUser {...props}></AiOutlineUser>
+    case 'lastName':
+      return <AiOutlineUser {...props}></AiOutlineUser>
+    case 'password':
+      return <AiOutlineLock {...props}></AiOutlineLock>
+    case 'password2':
+      return <AiOutlineLock {...props}></AiOutlineLock>
+    case 'oldPassword':
+      return <AiOutlineLock {...props}></AiOutlineLock>
 
-      default:
-         return null
-   }
+    default:
+      return null
+  }
 }
 
 export default getInputIcon

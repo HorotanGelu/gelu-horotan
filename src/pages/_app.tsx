@@ -8,26 +8,24 @@ import { RouteShield } from '../components/RouteShield'
 import BaseLayout from '../components/layouts/BaseLayout'
 
 type NextPageWithLayout = NextPage & {
-   getLayout?: (page: ReactElement) => ReactNode
+  getLayout?: (page: ReactElement) => ReactNode
 }
 
 type AppPropsWithLayout = AppProps & {
-   Component: NextPageWithLayout
+  Component: NextPageWithLayout
 }
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-   const getLayout = Component.getLayout ?? (page => page)
-   return (
-      <>
-         <Providers>
-            <RouteShield>
-               <BaseLayout>
-                  {getLayout(<Component {...pageProps} />)}
-               </BaseLayout>
-            </RouteShield>
-         </Providers>
-      </>
-   )
+  const getLayout = Component.getLayout ?? (page => page)
+  return (
+    <>
+      <Providers>
+        <RouteShield>
+          <BaseLayout>{getLayout(<Component {...pageProps} />)}</BaseLayout>
+        </RouteShield>
+      </Providers>
+    </>
+  )
 }
 
 export default MyApp
