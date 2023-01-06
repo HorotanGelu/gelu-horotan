@@ -17,7 +17,7 @@ import Tabs from '../Tab'
 import ProjectWrapper from './ProjectWrapper'
 import FormProgressBar from './FormProgressBar'
 
-const ProjectForm = () => {
+const ProjectForm: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const { addProject } = useProject()
 
