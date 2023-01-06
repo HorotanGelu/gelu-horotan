@@ -16,6 +16,6 @@
     "jsx": "preserve",
     "strictNullChecks": false
   },
-  "include": ["next-env.d.ts", "pages/**/*", "src/**/*"],
+  "include": ["next-env.d.ts", "src/pages/**/*", "src/**/*"],
   "exclude": ["node_modules"]
 }
