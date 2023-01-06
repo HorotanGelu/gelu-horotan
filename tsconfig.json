@@ -16,6 +16,6 @@
     "jsx": "preserve",
     "strictNullChecks": false
   },
-  "include": ["next-env.d.ts", "src/**/*"],
+  "include": ["next-env.d.ts", "src/**/*", "src/components/form/*"],
   "exclude": ["node_modules"]
 }
