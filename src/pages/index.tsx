@@ -1,17 +1,14 @@
-import axios from 'axios'
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 
 import Button from '../components/Button'
 import ProjectForm from '../components/form/ProjectForm'
 import ModalWrapper from '../components/ModalWrapper'
 import HeroIllustration from '../components/svgs/HeroIllustration'
-import { useAuth } from '../context/hooks/useAuth'
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false)
 
   const myRef = useRef<HTMLDivElement>(null)
-  const { user, fetchAllUsers } = useAuth()
   const executeScroll = () => {
     if (null !== myRef.current) {
       myRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })

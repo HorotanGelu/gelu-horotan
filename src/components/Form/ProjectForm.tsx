@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
-import { useAuth } from '../../context/hooks/useAuth'
 
 // Components
 import Input from './Input'
-import Button from '../Button'
 
 // Form
 import { Field, Form, Formik } from 'formik'
-import Select from 'react-select'
+
 import * as Yup from 'yup'
 import TextArea from './TextArea'
 import { useProject } from '../../context/hooks/useProject'

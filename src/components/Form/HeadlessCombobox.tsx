@@ -3,7 +3,7 @@ import { Combobox, Transition } from '@headlessui/react'
 
 // Icons
 import { IoIosArrowForward } from 'react-icons/io'
-import { MdTaskAlt, MdErrorOutline, MdClose } from 'react-icons/md'
+import { MdTaskAlt, MdClose } from 'react-icons/md'
 
 type Props = {
   name: string
