@@ -58,7 +58,7 @@ const LoginForm = ({ className, rounded }: Props) => {
             className='mb-4 w-full self-center py-2 px-4  text-primary bg-secondary_s_2 uppercase'
             rounded
           >
-            LOGIn
+            LOGIN
           </Button>
         </Form>
       )}
