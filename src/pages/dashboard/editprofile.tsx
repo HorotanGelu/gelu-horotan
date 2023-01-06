@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react'
 // import UpdateProfileForm from '../../components/form/UpdateProfileForm'
 import DashLayout from '../../components/layouts/DashLayout'
 
-const Editprofile = () => {
+function Editprofile() {
   return (
     <div className='w-full h-full flex gap-8 items-center justify-center  '>
       {/* <UpdateProfileForm></UpdateProfileForm> */}

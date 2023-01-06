@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 
 import Button from '../components/Button'
-import ProjectForm from '../components/form/ProjectForm'
+// import ProjectForm from '../components/form/ProjectForm'
 import ModalWrapper from '../components/ModalWrapper'
 import HeroIllustration from '../components/svgs/HeroIllustration'
 
@@ -48,10 +48,7 @@ export default function Home() {
             setIsOpen={setIsOpen}
             backgroundColor='bg-secondary'
           >
-            {/* <div className='h-full bg-blue-200 flex items-center justify-center w-full'>
-                     TEST
-                  </div> */}
-            <ProjectForm />
+            {/* <ProjectForm /> */}
           </ModalWrapper>
         </Button>
       </div>
