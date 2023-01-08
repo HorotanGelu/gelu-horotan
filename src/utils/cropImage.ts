@@ -46,6 +46,7 @@ export default async function getCroppedImg(
 
   const canvas = document.createElement('canvas')
   const ctx = canvas.getContext('2d')
+  // TEST
 
   if (!ctx) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
